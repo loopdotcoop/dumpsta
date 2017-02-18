@@ -60,11 +60,11 @@ jQuery(function($) {
     char: 't'
   });
   $('#dump').html(dumpsta.dump());
-  dumpsta.editBox({
+  dumpsta.edit({
     id: box0,
     left: 10
   });
-  dumpsta.editBox({
+  dumpsta.edit({
     id: box1,
     char: '-'
   });

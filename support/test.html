@@ -33,15 +33,15 @@
   <script>!function(d,i,s){i=~~d.cookie.split('~')[1];s=d.getElementById('es')
   if(s)s.options[i].selected=true}(document)</script>
 
-  <!-- Navigation menu -->
+  <!--Header and Navigation menu -->
+  <h1 style="display:inline">Dumpsta <span id="version"> 0.0.*</span>&nbsp;</h1>
+
   <a href="../index.html">Home</a> &nbsp;
   <span>Test</span> &nbsp;
   <a href="examples.html">Examples</a> &nbsp;
   <a href="https://github.com/loopdotcoop/dumpsta">GitHub</a> &nbsp;
 
-  <!-- Header-->
-  <h1>Dumpsta <span id="version">0.0.*</span></h1>
-  <h2>Test</h2>
+  <h2 style="margin-top:0.2em">Test</h2>
 
   <!-- Upgrade message for Internet Explorer 8 and below -->
   <!--[if lte IE 8]>
@@ -73,9 +73,15 @@
               ]
             : (3 == i) ? [ // Development ES6
                   f + 'main/App.es6.js'
+                , f + 'main/Border.es6.js'
                 , f + 'main/Box.es6.js'
+                , f + 'main/Button.es6.js'
+                , f + 'main/Label.es6.js'
                 , f + 'test/App-universal-test.es6.js'
+                , f + 'test/Border-universal-test.es6.js'
                 , f + 'test/Box-universal-test.es6.js'
+                , f + 'test/Button-universal-test.es6.js'
+                , f + 'test/Label-universal-test.es6.js'
               ]
             : [ // Production ES5 (the default, if no cookie has been set)
                 , '../lib/traceur-runtime.js'

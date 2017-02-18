@@ -16,18 +16,29 @@ ROOT.Dumpsta.Box = class {
           , char:   ' '
         }
         Object.assign(this, defaults, config, { app })
+
+        //// Convert `char` to a string.
+        this.char += ''
     }
 
-    dump (config) {
+    render (config) {
         const { top, left, width, height, char } = this
-        const grid = this.app.grid
+        const grid   = this.app.grid
+        const length = char.length // `char[i % length]` allows multi-char fills
+
+        if (1 > width || 1 > height) return // invisible
 
         //// Draw the Box.
         for (let y=top; y<top+height; y++)
             if (grid[y]) // skip the row if missing
-                for (let x=left; x<left+width; x++)
+                for (let x=left,i=0; x<left+width; x++,i++)
                     if (grid[y][x]) // skip the grid-position if missing
-                        grid[y][x] = { c:char } // draw the character
+                        grid[y][x] = { c:char[i % length] } // draw the char
+    }
+
+    edit (config) { //@todo inherit from Element
+        for (let key in config) this[key] = config[key]
+        this.char += ''
     }
 
 }

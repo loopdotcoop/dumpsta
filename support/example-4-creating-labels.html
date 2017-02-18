@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Dumpsta Examples</title>
+  <title>Dumpsta Example 4: Creating Labels</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Examples of how to use Dumpsta">
+  <meta name="description" content="How to use the Dumpsta.Label class">
 
   <!-- Usage: `LERT("Some alert message here!")` -->
   <script>!function(s){var A='addEventListener',L='LERT',S='setAttribute',t=top,
@@ -38,24 +38,10 @@
 
   <a href="../index.html">Home</a> &nbsp;
   <a href="test.html">Test</a> &nbsp;
-  <span>Examples</span> &nbsp;
+  <a href="examples.html">Examples</a> &nbsp;
   <a href="https://github.com/loopdotcoop/dumpsta">GitHub</a> &nbsp;
 
-  <h2 style="margin-top:0.2em">Examples</h2>
-
-  <!-- Examples index content -->
-  <a href="example-1-creating-borders.html">
-    Example 1: Creating Borders
-  </a><br>
-  <a href="example-2-creating-boxes.html">
-    Example 2: Creating Boxes
-  </a><br>
-  <a href="example-3-creating-buttons.html">
-    Example 3: Creating Buttons
-  </a><br>
-  <a href="example-4-creating-labels.html">
-    Example 4: Creating Labels
-  </a><br>
+  <h2 style="margin-top:0.2em">Example 4: Creating Labels</h2>
 
   <!-- Upgrade message for Internet Explorer 8 and below -->
   <!--[if lte IE 8]>
@@ -65,6 +51,10 @@
 
   <!--[if gte IE 9 | !IE ]><!--><!-- Begin hiding from IE 8 and below -->
 
+  <!-- Displays the example -->
+  <pre id="dump" style="font: 18px Monaco,'Lucida Console',monospace;
+    background:#cde; width:48em; line-height:1.15"></pre>
+
   <!-- Load the proper scripts, according to the <SELECT> dropdown menu -->
   <script>!function (d) { 'use strict'
       var i = ~~d.cookie.split('~')[1] // 0 - 3
@@ -73,17 +63,24 @@
               (1 == i) ? [ // Production Minified ES5
                 , '../lib/traceur-runtime.min.js'
                 , f + 'main/dumpsta.es5.min.js'
+                , f + 'example/4-creating-labels.es5.js' // no need to minify
               ]
             : (2 == i) ? [ // Production ES6
                   f + 'main/dumpsta.es6.js'
+                , f + 'example/4-creating-labels.es6.js'
               ]
             : (3 == i) ? [ // Development ES6
                   f + 'main/App.es6.js'
+                , f + 'main/Border.es6.js'
                 , f + 'main/Box.es6.js'
+                , f + 'main/Button.es6.js'
+                , f + 'main/Label.es6.js'
+                , f + 'example/4-creating-labels.es6.js'
               ]
             : [ // Production ES5 (the default, if no cookie has been set)
                 , '../lib/traceur-runtime.js'
                 , f + 'main/dumpsta.es5.js'
+                , f + 'example/4-creating-labels.es5.js'
               ]
         , B = '<script src="'  // begin
         , E = '"></'+'script>' // end

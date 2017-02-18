@@ -13,8 +13,29 @@ jQuery(function($) {
 if ('function' != typeof jQuery)
   throw Error('jQuery not found');
 jQuery(function($) {
+  test('The Border class', function() {
+    is('function' == typeof Dumpsta.Border, '`Dumpsta.Border` is a function');
+  });
+});
+if ('function' != typeof jQuery)
+  throw Error('jQuery not found');
+jQuery(function($) {
   test('The Box class', function() {
     is('function' == typeof Dumpsta.Box, '`Dumpsta.Box` is a function');
+  });
+});
+if ('function' != typeof jQuery)
+  throw Error('jQuery not found');
+jQuery(function($) {
+  test('The Button class', function() {
+    is('function' == typeof Dumpsta.Button, '`Dumpsta.Button` is a function');
+  });
+});
+if ('function' != typeof jQuery)
+  throw Error('jQuery not found');
+jQuery(function($) {
+  test('The Label class', function() {
+    is('function' == typeof Dumpsta.Label, '`Dumpsta.Label` is a function');
   });
 });
 //# sourceURL=<compile-source>

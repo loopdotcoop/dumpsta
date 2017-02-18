@@ -85,13 +85,13 @@ var box7 = dumpsta.addBox({
 $('#dump').html( dumpsta.dump() )
 
 //// Move the first box.
-dumpsta.editBox({
+dumpsta.edit({
     id:     box0
   , left:   10
 })
 
 //// Change the second box’s fill to the hyphen ('-') character.
-dumpsta.editBox({
+dumpsta.edit({
     id:     box1
   , char:   '-'
 })

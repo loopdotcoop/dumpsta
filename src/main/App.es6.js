@@ -3,7 +3,7 @@
 !function (ROOT) { 'use strict'
 
 const NAME     = 'Dumpsta'
-    , VERSION  = '0.0.1'
+    , VERSION  = '0.0.2'
     , HOMEPAGE = 'http://dumpsta.loop.coop/'
 
 
@@ -17,7 +17,8 @@ const Dumpsta = ROOT.Dumpsta = class {
             width:  80      // width of the grid in chars
           , height: 24      // height of the grid in chars
           , format: 'plain' // 'plain', 'cli' or 'html'
-          , trails: false   // ignore full-scale spaces box before `dump()`?
+          , char:   ' '     // fills the full-scale Box
+          , trails: false   // ignore full-scale Box before `dump()`?
         }
         Object.assign(this, defaults, config)
 
@@ -34,8 +35,8 @@ const Dumpsta = ROOT.Dumpsta = class {
                 this.grid[y][x] = { c:' ' } // `c` stands for 'character'
         }
 
-        //// ...and adding a full-scale box filled with spaces.
-        this.addBox()
+        //// ...and adding a full-scale Box (filled with spaces, by default).
+        this.add({ el:Dumpsta.Box, char:this.char })
     }
 
 
@@ -55,7 +56,7 @@ const Dumpsta = ROOT.Dumpsta = class {
         //// Tell each element to render itself, in z-index order.
         //// Usually we render Element 0 first, which wipes the grid clean.
         let el, i = trails ? 1 : 0
-        while (el = this.els[i++]) el.dump(config)
+        while (el = this.els[i++]) el.render(config)
 
         //// Render each line to a string in an array...
         let out = []
@@ -71,20 +72,20 @@ const Dumpsta = ROOT.Dumpsta = class {
     }
 
 
-    ////
-    addBox (config={}) {
+    //// Creates a new Element at the top layer.
+    add (config={}) {
         const id = config.id = this.id++ // record the new ID in `config`
         const z  = config.z  = this.els.length // record the z-index in `config`
-        this.ids[id] = this.els[z] = new Dumpsta.Box(config, this) // top layer
+        this.ids[id] = this.els[z] = new config.el(config, this)
         return id
     }
 
 
-    ////
-    editBox (config={}) {
+    //// Modifies an Element.
+    edit (config={}) {
         const el = this.ids[config.id]
         if (! el) return // no such element
-        for (let key in config) el[key] = config[key]
+        el.edit(config)
     }
 
 }
