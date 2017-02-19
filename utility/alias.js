@@ -1,7 +1,7 @@
 !function () { 'use strict'
 
 const NAME     = 'Oopish Alias'
-    , VERSION  = '0.0.1'
+    , VERSION  = '0.0.2'
     , HOMEPAGE = 'http://alias.oopish.com/'
 
     , HELP =
@@ -18,17 +18,19 @@ $ cd /path/to/your/project/
 $ node utility/alias.js
 ${NAME} ${VERSION} added 6 lines to ~/.bash_profile.
 After reopening your terminal, the following commands will be available:
-    ooauto   (Generates new classes, tests and examples)
-    oobump   (Bumps the current minor-version)
-    ooinit   (Initialises a new project)
-    oomake   (Builds the project, from src/ into dist/)
-    oopush   (Prompts for a commit-message, then pushes)
-    ootest   (Runs unit tests)
+    ooauto   Generates new classes, demos, docs and tests
+    oobump   Bumps the current minor-version
+    oodocs   Generates API documentation
+    ooinit   Initialises a new project
+    oomake   Builds the project, from src/ into dist/
+    oopush   Prompts for a commit-message, then pushes
+    ootest   Runs unit tests
 
 Aliases
 -------
 $ ooauto   node utility/auto.js
 $ oobump   node utility/bump.js
+$ oodocs   node utility/docs.js
 $ ooinit   node utility/init.js
 $ oomake   node utility/make.js
 $ oopush   node utility/push.js
@@ -61,7 +63,7 @@ if ('function' !== typeof require)
 const fs = require('fs')
 
 //// Set constants.
-const HOMEDIR = require('os').homedir()
+const homedir = require('os').homedir()
 
 //// Declare variables.
 let opt, path, original, removed, diff, remove = false
@@ -77,10 +79,10 @@ while ( opt = process.argv.shift() ) {
 
 
 //// Get the absolute path to the ~/.bash_profile or ~/.bashrc file.
-if ( fs.existsSync(HOMEDIR+'/.bash_profile') )
-    path = HOMEDIR+'/.bash_profile'
-else if ( fs.existsSync(HOMEDIR+'/.bashrc') )
-    path = HOMEDIR+'/.bashrc'
+if ( fs.existsSync(homedir+'/.bash_profile') )
+    path = homedir+'/.bash_profile'
+else if ( fs.existsSync(homedir+'/.bashrc') )
+    path = homedir+'/.bashrc'
 else
     return console.warn(
 `${NAME} ${VERSION} cannot find the ~/.bash_profile file or the ~/.bashrc file.
@@ -92,7 +94,7 @@ Windows cannot run ${NAME} ${VERSION}`)
 //// Check whether the aliases have already been added.
 original = ( fs.readFileSync(path)+'' ).split('\n')
 removed = original.filter( line =>
-    ! /^alias oo(auto|bump|init|make|push|test)="node utility\//.test(line)
+    ! /^alias oo(auto|bump|docs|init|make|push|test)="node utility\//.test(line)
 )
 diff = original.length - removed.length
 if (diff)
@@ -132,6 +134,7 @@ try {
     fs.writeFileSync( path, ( original.concat([
         `alias ooauto="node utility/auto.js" ${comment}`
       , `alias oobump="node utility/bump.js" ${comment}`
+      , `alias oodocs="node utility/docs.js" ${comment}`
       , `alias ooinit="node utility/init.js" ${comment}`
       , `alias oomake="node utility/make.js" ${comment}`
       , `alias oopush="node utility/push.js" ${comment}`
@@ -156,12 +159,13 @@ You should change temporarily change the permissions, eg:
 return console.log(
 `${NAME} ${VERSION} added 6 lines to ${path}.
 After reopening your terminal, the following commands will be available:
-    ooauto   (Generates new classes, tests and examples)
-    oobump   (Bumps the current minor-version)
-    ooinit   (Initialises a new project)
-    oomake   (Builds the project, from src/ into dist/)
-    oopush   (Prompts for a commit-message, then pushes)
-    ootest   (Runs unit tests)
+    ooauto   Generates new classes, demos, docs and tests
+    oobump   Bumps the current minor-version
+    oodocs   Generates API documentation
+    ooinit   Initialises a new project
+    oomake   Builds the project, from src/ into dist/
+    oopush   Prompts for a commit-message, then pushes
+    ootest   Runs unit tests
 `)
 
 

@@ -1,7 +1,7 @@
 !function () { 'use strict'
 
 const NAME     = 'Oopish Make'
-    , VERSION  = '0.0.2'
+    , VERSION  = '0.0.3'
     , HOMEPAGE = 'http://make.oopish.com/'
 
     , BYLINE   = `\n\n\n\n//\\\\//\\\\ built by ${NAME} ${VERSION}\n`
@@ -68,7 +68,7 @@ const fs = require('fs')
     , traceur = require('traceur/src/node/api.js')
 
 //// Set constants.
-const PROJECT = process.cwd().split('/').pop()
+const project = process.cwd().split('/').pop()
 
 
 //// Declare variables.
@@ -95,7 +95,7 @@ src.forEach( name => {
     es6.push( fs.readFileSync('src/main/' + name)+'' )
 })
 es6 = es6.join('\n\n\n\n') + BYLINE
-fs.writeFileSync( `dist/main/${PROJECT}.es6.js`, es6 )
+fs.writeFileSync( `dist/main/${project}.es6.js`, es6 )
 
 
 //// 2. Transpile the new ‘project.es6.js’ to ‘project.es5.js’
@@ -104,12 +104,12 @@ es5 = es5.replace( // correct a traceur error
     /efined' : \$traceurRuntime\.typeof\(global\)\) \? global : \(void 0\)\);/g
   , "efined' : $traceurRuntime.typeof(global)) ? global : this);"
 )
-fs.writeFileSync( `dist/main/${PROJECT}.es5.js`, es5 )
+fs.writeFileSync( `dist/main/${project}.es5.js`, es5 )
 
 
 //// 3. Minify ‘project.es5.js’ to ‘project.es5.min.js’
-min = uglify.minify( es5, minConfig(`dist/main/${PROJECT}.es5.min.js`) )
-fs.writeFileSync( `dist/main/${PROJECT}.es5.min.js`, min.code + BYLINE )
+min = uglify.minify( es5, minConfig(`dist/main/${project}.es5.min.js`) )
+fs.writeFileSync( `dist/main/${project}.es5.min.js`, min.code + BYLINE )
 
 
 
@@ -160,23 +160,23 @@ src.forEach( name => {
 
 //// - ‘dist/test/project-browser-test.es6.js’    (can only be run in a browser)
 es6.browser    = es6.browser.join('\n\n\n\n')    + BYLINE
-fs.writeFileSync( `dist/test/${PROJECT}-browser-test.es6.js`,  es6.browser )
+fs.writeFileSync( `dist/test/${project}-browser-test.es6.js`,  es6.browser )
 
 //// - ‘dist/test/project-nonbrowser-test.es6.js’ (cannot be run in a browser)
 es6.nonbrowser = es6.nonbrowser.join('\n\n\n\n') + BYLINE
-fs.writeFileSync( `dist/test/${PROJECT}-nonbrowser-test.es6.js`,es6.nonbrowser )
+fs.writeFileSync( `dist/test/${project}-nonbrowser-test.es6.js`,es6.nonbrowser )
 
 //// - ‘dist/test/project-universal-test.es6.js’  (can run anywhere)
 es6.universal  = es6.universal.join('\n\n\n\n')  + BYLINE
-fs.writeFileSync( `dist/test/${PROJECT}-universal-test.es6.js`, es6.universal )
+fs.writeFileSync( `dist/test/${project}-universal-test.es6.js`, es6.universal )
 
 
 //// 7. Transpile the ‘browser’ and ‘universal’ files to ES5
 es5 = {}
 es5.browser    = traceur.compile(es6.browser,   { blockBinding:true }) + BYLINE
-fs.writeFileSync( `dist/test/${PROJECT}-browser-test.es5.js`,    es5.browser )
+fs.writeFileSync( `dist/test/${project}-browser-test.es5.js`,    es5.browser )
 es5.universal  = traceur.compile(es6.universal, { blockBinding:true }) + BYLINE
-fs.writeFileSync( `dist/test/${PROJECT}-universal-test.es5.js`,  es5.universal )
+fs.writeFileSync( `dist/test/${project}-universal-test.es5.js`,  es5.universal )
 
 
 

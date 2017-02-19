@@ -78,8 +78,7 @@
                   f + 'main/dumpsta.es6.js'
               ]
             : (3 == i) ? [ // Development ES6
-                  f + 'main/App.es6.js'
-                , f + 'main/Box.es6.js'
+                  f + 'main/App.es6.js' // only need this for the `VERSION`
               ]
             : [ // Production ES5 (the default, if no cookie has been set)
                 , 'lib/traceur-runtime.js'
