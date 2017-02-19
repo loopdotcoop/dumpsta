@@ -18,4 +18,13 @@ if ('function' !== typeof require) {
     require('../dist/test/dumpsta-universal-test.es6.js')
     require('../dist/test/dumpsta-nonbrowser-test.es6.js')
 
+    //// Launch the browser tests.
+    const exec = require('child_process').exec
+    exec(
+        'open file://' + process.cwd() + '/support/test.html'
+      , function(error, stdout, stderr) {
+            if (error) console.warn(error)
+        }
+    )
+
 }

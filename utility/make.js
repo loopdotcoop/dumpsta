@@ -1,8 +1,8 @@
 !function () { 'use strict'
 
-const NAME     = 'Dumpsta Make'
-    , VERSION  = '0.0.1'
-    , HOMEPAGE = 'http://dumpsta.loop.coop/'
+const NAME     = 'Oopish Make'
+    , VERSION  = '0.0.2'
+    , HOMEPAGE = 'http://make.oopish.com/'
 
     , BYLINE   = `\n\n\n\n//\\\\//\\\\ built by ${NAME} ${VERSION}\n`
     , HELP =
@@ -11,26 +11,33 @@ ${NAME} ${VERSION}
 ${'='.repeat( (NAME+VERSION).length+1 )}
 
 This Node.js script reads source files from ‘src/’ (all ES6), and rebuilds the
-production files in ‘dist/’ (ES6, ES5 and minified ES5).
+distribution files in ‘dist/’ (ES6, ES5 and minified ES5).
+
+Installation
+------------
+You’ll need Uglify and Traceur installed globally before running make.js:
+$ npm install -g uglify-js; npm install -g traceur
+
+If you haven’t done it already, you should set up the \`oomake\` alias:
+$ node utility/alias.js
 
 Basic Usage
 -----------
-You’ll need Uglify and Traceur installed globally before running make.js:
-$ npm install -g uglify-js; npm install -g traceur
-$ cd /your/path/to/dumpsta/
-$ node make.js
+$ cd /path/to/your/project/   # A project directory in standard Oopish format
+$ oomake --version            # Show the current ${NAME} version
+$ oomake                      # Build all distribution files in ‘dist/’
 
 Make Tasks
 ----------
-1. Concatenate files in ‘src/main/’ to ‘dist/main/dumpsta.es6.js’
-2. Transpile the new ‘dumpsta.es6.js’ to ‘dumpsta.es5.js’
-3. Minify ‘dumpsta.es5.js’ to ‘dumpsta.es5.min.js’
+1. Concatenate files in ‘src/main/’ to ‘dist/main/project.es6.js’
+2. Transpile the new ‘project.es6.js’ to ‘project.es5.js’
+3. Minify ‘project.es5.js’ to ‘project.es5.min.js’
 4. Copy files in ‘src/example/’ to ‘dist/example/’
 5. Transpile ES6 files in dist/example/’ to ES5
 6. Concatenate files in ‘src/test/’ to:
-   - ‘dist/test/dumpsta-browser-test.es6.js’    (can only be run in a browser)
-   - ‘dist/test/dumpsta-nonbrowser-test.es6.js’ (cannot be run in a browser)
-   - ‘dist/test/dumpsta-universal-test.es6.js’  (can run anywhere)
+   - ‘dist/test/project-browser-test.es6.js’    (can only be run in a browser)
+   - ‘dist/test/project-nonbrowser-test.es6.js’ (cannot be run in a browser)
+   - ‘dist/test/project-universal-test.es6.js’  (can run anywhere)
 7. Transpile the ‘browser’ and ‘universal’ files to ES5
 
 Options
@@ -39,6 +46,15 @@ Options
 -v  --version   Show the current ${NAME} version
 
 This script belongs to ${HOMEPAGE}`
+
+
+//// Validate the environment.
+if ( '/utility/make.js' !== process.argv[1].slice(-16) )
+    return console.warn('Unexpected environment!')
+if ( ( process.cwd() !== process.argv[1].slice(0,-16) ) )
+    return console.warn('Unexpected CWD, try:\n  $ cd /path/to/your/project/')
+if ('function' !== typeof require)
+    return console.warn('Use Node.js instead:\n  $ node utility/make.js')
 
 
 
@@ -50,6 +66,10 @@ This script belongs to ${HOMEPAGE}`
 const fs = require('fs')
     , uglify = tidyUglifyWarnings( require('uglify-js') )
     , traceur = require('traceur/src/node/api.js')
+
+//// Set constants.
+const PROJECT = process.cwd().split('/').pop()
+
 
 //// Declare variables.
 let opt, es6, es5, min, src, names
@@ -66,7 +86,7 @@ while ( opt = process.argv.shift() ) {
 //// MAIN
 
 
-//// 1. Concatenate files in ‘src/main/’ to ‘dist/main/dumpsta.es6.js’
+//// 1. Concatenate files in ‘src/main/’ to ‘dist/main/project.es6.js’
 src = fs.readdirSync('src/main')
 es6 = []
 src.forEach( name => {
@@ -75,21 +95,21 @@ src.forEach( name => {
     es6.push( fs.readFileSync('src/main/' + name)+'' )
 })
 es6 = es6.join('\n\n\n\n') + BYLINE
-fs.writeFileSync( 'dist/main/dumpsta.es6.js', es6 )
+fs.writeFileSync( `dist/main/${PROJECT}.es6.js`, es6 )
 
 
-//// 2. Transpile the new ‘dumpsta.es6.js’ to ‘dumpsta.es5.js’
+//// 2. Transpile the new ‘project.es6.js’ to ‘project.es5.js’
 es5 = traceur.compile(es6, { blockBinding:true }) + BYLINE
 es5 = es5.replace( // correct a traceur error
     /efined' : \$traceurRuntime\.typeof\(global\)\) \? global : \(void 0\)\);/g
   , "efined' : $traceurRuntime.typeof(global)) ? global : this);"
 )
-fs.writeFileSync( 'dist/main/dumpsta.es5.js', es5 )
+fs.writeFileSync( `dist/main/${PROJECT}.es5.js`, es5 )
 
 
-//// 3. Minify ‘dumpsta.es5.js’ to ‘dumpsta.es5.min.js’
-min = uglify.minify( es5, minConfig('dist/main/dumpsta.es5.min.js') )
-fs.writeFileSync( 'dist/main/dumpsta.es5.min.js', min.code + BYLINE )
+//// 3. Minify ‘project.es5.js’ to ‘project.es5.min.js’
+min = uglify.minify( es5, minConfig(`dist/main/${PROJECT}.es5.min.js`) )
+fs.writeFileSync( `dist/main/${PROJECT}.es5.min.js`, min.code + BYLINE )
 
 
 
@@ -138,25 +158,25 @@ src.forEach( name => {
     ua.push( fs.readFileSync('src/test/' + name)+'' )
 })
 
-//// - ‘dist/test/dumpsta-browser-test.es6.js’    (can only be run in a browser)
+//// - ‘dist/test/project-browser-test.es6.js’    (can only be run in a browser)
 es6.browser    = es6.browser.join('\n\n\n\n')    + BYLINE
-fs.writeFileSync( 'dist/test/dumpsta-browser-test.es6.js',    es6.browser )
+fs.writeFileSync( `dist/test/${PROJECT}-browser-test.es6.js`,  es6.browser )
 
-//// - ‘dist/test/dumpsta-nonbrowser-test.es6.js’ (cannot be run in a browser)
+//// - ‘dist/test/project-nonbrowser-test.es6.js’ (cannot be run in a browser)
 es6.nonbrowser = es6.nonbrowser.join('\n\n\n\n') + BYLINE
-fs.writeFileSync( 'dist/test/dumpsta-nonbrowser-test.es6.js', es6.nonbrowser )
+fs.writeFileSync( `dist/test/${PROJECT}-nonbrowser-test.es6.js`,es6.nonbrowser )
 
-//// - ‘dist/test/dumpsta-universal-test.es6.js’  (can run anywhere)
+//// - ‘dist/test/project-universal-test.es6.js’  (can run anywhere)
 es6.universal  = es6.universal.join('\n\n\n\n')  + BYLINE
-fs.writeFileSync( 'dist/test/dumpsta-universal-test.es6.js',  es6.universal )
+fs.writeFileSync( `dist/test/${PROJECT}-universal-test.es6.js`, es6.universal )
 
 
 //// 7. Transpile the ‘browser’ and ‘universal’ files to ES5
 es5 = {}
 es5.browser    = traceur.compile(es6.browser,   { blockBinding:true }) + BYLINE
-fs.writeFileSync( 'dist/test/dumpsta-browser-test.es5.js',    es5.browser )
+fs.writeFileSync( `dist/test/${PROJECT}-browser-test.es5.js`,    es5.browser )
 es5.universal  = traceur.compile(es6.universal, { blockBinding:true }) + BYLINE
-fs.writeFileSync( 'dist/test/dumpsta-universal-test.es5.js',  es5.universal )
+fs.writeFileSync( `dist/test/${PROJECT}-universal-test.es5.js`,  es5.universal )
 
 
 
