@@ -26,7 +26,6 @@ ROOT.Dumpsta.Button = class {
         if (this.auto) this.width = this.text.length + 4
 
         //// A Button is composed of a Box of spaces, a Border...
-        const Dumpsta = ROOT.Dumpsta
         this.box    = new ROOT.Dumpsta.Box(this, app)
         this.border = new ROOT.Dumpsta.Border(this, app)
 

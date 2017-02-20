@@ -38,9 +38,17 @@ jQuery(function($) {
     is('function' == typeof Dumpsta.Label, '`Dumpsta.Label` is a function');
   });
 });
+if ('function' != typeof jQuery)
+  throw Error('jQuery not found');
+jQuery(function($) {
+  'use strict';
+  test('The Table class', function() {
+    is('function' == typeof Dumpsta.Table, '`Dumpsta.Table` is a function');
+  });
+});
 //# sourceURL=<compile-source>
 
 
 
 
-//\\//\\ built by Oopish Make 0.0.4
+//\\//\\ built by Oopish Make 0.0.5

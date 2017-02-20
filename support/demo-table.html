@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Dumpsta Demo 2: Creating Boxes</title>
+  <title>Dumpsta.Table Demo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="How to use the Dumpsta.Box class">
+  <meta name="description" content="How to use the Dumpsta.Table class">
 
   <!-- Usage: `LERT("Some alert message here!")` -->
   <script>!function(s){var A='addEventListener',L='LERT',S='setAttribute',t=top,
@@ -34,19 +34,19 @@
   if(s)s.options[i].selected=true}(document)</script>
 
   <!--Header and Navigation menu -->
-  <h1 style="display:inline">Dumpsta <span id="version"> 0.0.*</span>&nbsp;</h1>
+  <h1 style="display:inline">Dumpsta <span id="version">0.0.*</span></h1>
 
   <a href="../index.html">Home</a> &nbsp;
   <a href="test.html">Test</a> &nbsp;
   <a href="demos.html">Demos</a> &nbsp;
-  <a href="https://github.com/loopdotcoop/dumpsta">GitHub</a> &nbsp;
+  <a href="https://github.com/@todo">GitHub</a> &nbsp;
 
-  <h2 style="margin-top:0.2em">Demo 2: Creating Boxes</h2>
+  <h2 style="margin-top:0.2em">Dumpsta.Table Demo</h2>
 
   <!-- Upgrade message for Internet Explorer 8 and below -->
   <!--[if lte IE 8]>
   <h2>Please upgrade to Internet Explorer 9 or higher</h2>
-  <script>document.getElementById('version').innerHTML='Not Supported';</script>
+  <script>document.getElementById('version').innerHTML='Not Supported'</script>
   <![endif]-->
 
   <!--[if gte IE 9 | !IE ]><!--><!-- Begin hiding from IE 8 and below -->
@@ -63,11 +63,11 @@
               (1 == i) ? [ // Production Minified ES5
                 , '../lib/traceur-runtime.min.js'
                 , f + 'main/dumpsta.es5.min.js'
-                , f + 'demo/box-demo.es5.js' // no need to minify
+                , f + 'demo/table-demo.es5.js' // no need to minify
               ]
             : (2 == i) ? [ // Production ES6
                   f + 'main/dumpsta.es6.js'
-                , f + 'demo/box-demo.es6.js'
+                , f + 'demo/table-demo.es6.js'
               ]
             : (3 == i) ? [ // Development ES6
                   f + 'main/App.es6.js'
@@ -76,12 +76,12 @@
                 , f + 'main/Button.es6.js'
                 , f + 'main/Label.es6.js'
                 , f + 'main/Table.es6.js'
-                , f + 'demo/box-demo.es6.js'
+                , f + 'demo/Table-demo.es6.js'
               ]
             : [ // Production ES5 (the default, if no cookie has been set)
                 , '../lib/traceur-runtime.js'
                 , f + 'main/dumpsta.es5.js'
-                , f + 'demo/box-demo.es5.js'
+                , f + 'demo/table-demo.es5.js'
               ]
         , B = '<script src="'  // begin
         , E = '"></'+'script>' // end
@@ -90,7 +90,7 @@
   }(document)</script>
 
   <!-- Display the version -->
-  <script>$('#version').html(Dumpsta.VERSION || '(VERSION not found)')</script>
+  <script>$('#version').html(Dumpsta.VERSION||'VERSION not found')</script>
 
   <!--<![endif]--><!-- End hiding from Internet Explorer 8 and below -->
 

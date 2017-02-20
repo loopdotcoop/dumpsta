@@ -2,7 +2,7 @@
 !function(ROOT) {
   'use strict';
   var NAME = 'Dumpsta',
-      VERSION = '0.0.2',
+      VERSION = '0.0.3',
       HOMEPAGE = 'http://dumpsta.loop.coop/';
   var Dumpsta = ROOT.Dumpsta = ($traceurRuntime.createClass)(function() {
     var config = arguments[0] !== (void 0) ? arguments[0] : {};
@@ -182,7 +182,6 @@
       this.auto = false;
     if (this.auto)
       this.width = this.text.length + 4;
-    var Dumpsta = ROOT.Dumpsta;
     this.box = new ROOT.Dumpsta.Box(this, app);
     this.border = new ROOT.Dumpsta.Border(this, app);
     this.label = new ROOT.Dumpsta.Label({
@@ -264,9 +263,95 @@
     }
   }, {});
 }('object' == (typeof global === 'undefined' ? 'undefined' : $traceurRuntime.typeof(global)) ? global : this);
+!function(ROOT) {
+  'use strict';
+  ROOT.Dumpsta.Table = ($traceurRuntime.createClass)(function(config, app) {
+    var defaults = {
+      top: 0,
+      left: 0,
+      width: null,
+      height: null,
+      auto: true,
+      char: ' ',
+      title: '',
+      header: false,
+      rows: []
+    };
+    Object.assign(this, defaults, config, {app: app});
+    if (null != this.width && !config.auto)
+      this.auto = false;
+    if (null != this.height && !config.auto)
+      this.auto = false;
+    if (this.auto)
+      this.height = this.rows.length + 2;
+    else
+      this.rows = this.rows.slice(0, this.height - 2);
+    var $__3 = this,
+        top = $__3.top,
+        left = $__3.left,
+        width = $__3.width,
+        height = $__3.height,
+        auto = $__3.auto,
+        rows = $__3.rows;
+    var maxs = [];
+    var lefts = [left + 1];
+    var row,
+        val;
+    for (var r = 0; r < rows.length; r++)
+      for (var row$__12 = rows[r],
+          c = 0; c < row$__12.length; c++)
+        row$__12[c] = null == row$__12[c] ? '' : row$__12[c] + '';
+    var cols = rows.reduce(function(acc, val) {
+      return Math.max(acc, val.length);
+    }, 0);
+    for (var c$__13 = 0,
+        r$__14 = 0; c$__13 < cols; c$__13++, r$__14 = 0)
+      while (row = rows[r$__14++])
+        row[c$__13] = null == row[c$__13] ? '' : row[c$__13];
+    for (var c$__15 = 0,
+        r$__16 = 0; c$__15 < cols; c$__15++, r$__16 = 0) {
+      maxs[c$__15] = 0;
+      while (row = rows[r$__16++])
+        maxs[c$__15] = Math.max(maxs[c$__15], row[c$__15].length);
+    }
+    for (var c$__17 = 0,
+        l = left; c$__17 < maxs.length; c$__17++)
+      lefts[c$__17 + 1] = (l += maxs[c$__17]) + 1;
+    if (this.auto)
+      this.width = lefts[lefts.length - 1] - this.left + 1;
+    this.box = new ROOT.Dumpsta.Box(this, app);
+    this.border = new ROOT.Dumpsta.Border(this, app);
+    this.labels = [];
+    for (var r$__18 = 0,
+        row$__19 = void 0; row$__19 = rows[r$__18]; r$__18++)
+      for (var c$__20 = 0; c$__20 < cols; c$__20++)
+        this.labels.push(new ROOT.Dumpsta.Label({
+          top: this.top + 1 + r$__18,
+          left: lefts[c$__20],
+          width: maxs[c$__20],
+          text: rows[r$__18][c$__20]
+        }, app));
+  }, {
+    render: function(config) {
+      if (1 > this.width || 1 > this.height)
+        return;
+      this.box.render();
+      this.border.render();
+      this.labels.forEach(function(label) {
+        return label.render();
+      });
+    },
+    edit: function(config) {
+      for (var key in config)
+        this[key] = config[key];
+      this.box.edit(config);
+      this.border.edit(config);
+    }
+  }, {});
+}('object' == (typeof global === 'undefined' ? 'undefined' : $traceurRuntime.typeof(global)) ? global : this);
 //# sourceURL=<compile-source>
 
 
 
 
-//\\//\\ built by Oopish Make 0.0.4
+//\\//\\ built by Oopish Make 0.0.5

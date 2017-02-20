@@ -3,7 +3,7 @@
 !function (ROOT) { 'use strict'
 
 const NAME     = 'Dumpsta'
-    , VERSION  = '0.0.2'
+    , VERSION  = '0.0.3'
     , HOMEPAGE = 'http://dumpsta.loop.coop/'
 
 
