@@ -2,7 +2,7 @@
 !function(ROOT) {
   'use strict';
   var NAME = 'Dumpsta',
-      VERSION = '0.0.3',
+      VERSION = '0.0.2',
       HOMEPAGE = 'http://dumpsta.loop.coop/';
   var Dumpsta = ROOT.Dumpsta = ($traceurRuntime.createClass)(function() {
     var config = arguments[0] !== (void 0) ? arguments[0] : {};
@@ -269,4 +269,4 @@
 
 
 
-//\\//\\ built by Oopish Make 0.0.3
+//\\//\\ built by Oopish Make 0.0.4

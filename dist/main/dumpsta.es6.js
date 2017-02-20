@@ -7,7 +7,7 @@
 !function (ROOT) { 'use strict'
 
 const NAME     = 'Dumpsta'
-    , VERSION  = '0.0.3'
+    , VERSION  = '0.0.2'
     , HOMEPAGE = 'http://dumpsta.loop.coop/'
 
 
@@ -401,4 +401,4 @@ ROOT.Dumpsta.Label = class {
 
 
 
-//\\//\\ built by Oopish Make 0.0.3
+//\\//\\ built by Oopish Make 0.0.4

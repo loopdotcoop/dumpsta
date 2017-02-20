@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Dumpsta Example 3: Creating Buttons</title>
+  <title>Dumpsta Demo 2: Creating Boxes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="How to use the Dumpsta.Button class">
+  <meta name="description" content="How to use the Dumpsta.Box class">
 
   <!-- Usage: `LERT("Some alert message here!")` -->
   <script>!function(s){var A='addEventListener',L='LERT',S='setAttribute',t=top,
@@ -38,10 +38,10 @@
 
   <a href="../index.html">Home</a> &nbsp;
   <a href="test.html">Test</a> &nbsp;
-  <a href="examples.html">Examples</a> &nbsp;
+  <a href="demos.html">Demos</a> &nbsp;
   <a href="https://github.com/loopdotcoop/dumpsta">GitHub</a> &nbsp;
 
-  <h2 style="margin-top:0.2em">Example 3: Creating Buttons</h2>
+  <h2 style="margin-top:0.2em">Demo 2: Creating Boxes</h2>
 
   <!-- Upgrade message for Internet Explorer 8 and below -->
   <!--[if lte IE 8]>
@@ -51,7 +51,7 @@
 
   <!--[if gte IE 9 | !IE ]><!--><!-- Begin hiding from IE 8 and below -->
 
-  <!-- Displays the example -->
+  <!-- Displays the demo -->
   <pre id="dump" style="font: 18px Monaco,'Lucida Console',monospace;
     background:#cde; width:48em; line-height:1.15"></pre>
 
@@ -63,11 +63,11 @@
               (1 == i) ? [ // Production Minified ES5
                 , '../lib/traceur-runtime.min.js'
                 , f + 'main/dumpsta.es5.min.js'
-                , f + 'example/3-creating-buttons.es5.js' // no need to minify
+                , f + 'demo/box-demo.es5.js' // no need to minify
               ]
             : (2 == i) ? [ // Production ES6
                   f + 'main/dumpsta.es6.js'
-                , f + 'example/3-creating-buttons.es6.js'
+                , f + 'demo/box-demo.es6.js'
               ]
             : (3 == i) ? [ // Development ES6
                   f + 'main/App.es6.js'
@@ -75,12 +75,12 @@
                 , f + 'main/Box.es6.js'
                 , f + 'main/Button.es6.js'
                 , f + 'main/Label.es6.js'
-                , f + 'example/3-creating-buttons.es6.js'
+                , f + 'demo/box-demo.es6.js'
               ]
             : [ // Production ES5 (the default, if no cookie has been set)
                 , '../lib/traceur-runtime.js'
                 , f + 'main/dumpsta.es5.js'
-                , f + 'example/3-creating-buttons.es5.js'
+                , f + 'demo/box-demo.es5.js'
               ]
         , B = '<script src="'  // begin
         , E = '"></'+'script>' // end

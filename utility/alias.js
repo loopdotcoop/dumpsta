@@ -1,7 +1,7 @@
 !function () { 'use strict'
 
 const NAME     = 'Oopish Alias'
-    , VERSION  = '0.0.2'
+    , VERSION  = '0.0.3'
     , HOMEPAGE = 'http://alias.oopish.com/'
 
     , HELP =
@@ -39,8 +39,8 @@ $ ootest   node utility/test.js
 Options
 -------
 -h  --help      Show this help message
+-r  --remove    Remove the aliases from ~/.bash_profile or ~/.bashrc
 -v  --version   Show the current ${NAME} version
--r  --remove    Removes the aliases from ~/.bash_profile or ~/.bashrc
 
 This script belongs to ${HOMEPAGE}`
 
@@ -71,11 +71,14 @@ let opt, path, original, removed, diff, remove = false
 //// Deal with command-line options.
 while ( opt = process.argv.shift() ) {
     if ('-h' === opt || '--help'    === opt) return console.log(HELP)
-    if ('-v' === opt || '--version' === opt) return console.log(VERSION)
     if ('-r' === opt || '--remove'  === opt) remove = true
+    if ('-v' === opt || '--version' === opt) return console.log(VERSION)
 }
 
 
+
+
+//// ADD OR REMOVE ALIASES
 
 
 //// Get the absolute path to the ~/.bash_profile or ~/.bashrc file.

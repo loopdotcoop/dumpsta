@@ -4,5 +4,5 @@
 
 [Home](http://dumpsta.loop.coop/) &nbsp;
 [Test](http://dumpsta.loop.coop/support/test.html) &nbsp;
-[Examples](http://dumpsta.loop.coop/support/examples.html) &nbsp;
+[Demos](http://dumpsta.loop.coop/support/demos.html) &nbsp;
 [GitHub](https://github.com/loopdotcoop/dumpsta)

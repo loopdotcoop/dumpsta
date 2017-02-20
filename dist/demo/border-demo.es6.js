@@ -1,4 +1,4 @@
-//\\//\\ src/example/1-creating-borders.es6.js
+//\\//\\ src/demo/Border-demo.es6.js
 
 
 
@@ -188,4 +188,4 @@ $('#dump').html( dumpsta.dump({ trails:true }) )
 
 
 
-//\\//\\ built by Oopish Make 0.0.3
+//\\//\\ built by Oopish Make 0.0.4

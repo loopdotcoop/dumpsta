@@ -1,7 +1,7 @@
 !function () { 'use strict'
 
 const NAME     = 'Oopish Make'
-    , VERSION  = '0.0.3'
+    , VERSION  = '0.0.4'
     , HOMEPAGE = 'http://make.oopish.com/'
 
     , BYLINE   = `\n\n\n\n//\\\\//\\\\ built by ${NAME} ${VERSION}\n`
@@ -32,8 +32,8 @@ Make Tasks
 1. Concatenate files in ‘src/main/’ to ‘dist/main/project.es6.js’
 2. Transpile the new ‘project.es6.js’ to ‘project.es5.js’
 3. Minify ‘project.es5.js’ to ‘project.es5.min.js’
-4. Copy files in ‘src/example/’ to ‘dist/example/’
-5. Transpile ES6 files in dist/example/’ to ES5
+4. Copy files in ‘src/demo/’ to ‘dist/demo/’ (and change to lowercase)
+5. Transpile ES6 files in dist/demo/’ to ES5
 6. Concatenate files in ‘src/test/’ to:
    - ‘dist/test/project-browser-test.es6.js’    (can only be run in a browser)
    - ‘dist/test/project-nonbrowser-test.es6.js’ (cannot be run in a browser)
@@ -114,28 +114,28 @@ fs.writeFileSync( `dist/main/${project}.es5.min.js`, min.code + BYLINE )
 
 
 
-//// EXAMPLE
+//// DEMO
 
 
-//// 4. Copy files in ‘src/example/’ to ‘dist/example/’
-src = fs.readdirSync('src/example')
+//// 4. Copy files in ‘src/demo/’ to ‘dist/demo/’ (and change to lowercase)
+src = fs.readdirSync('src/demo')
 es6 = [], names = []
 src.forEach( name => {
     if ( '.es6.js' !== name.slice(-7) ) return
-    es6.push('//\\\\//\\\\ src/example/' + name + '\n\n\n\n'
-        + fs.readFileSync('src/example/' + name)
+    es6.push('//\\\\//\\\\ src/demo/' + name + '\n\n\n\n'
+        + fs.readFileSync('src/demo/' + name)
     )
-    names.push( name.slice(0, -7) )
+    names.push( name.slice(0, -7).toLowerCase() ) // 'Q-demo.es6.js' to 'q-demo'
 })
 es6.forEach( (orig, i) =>
-    fs.writeFileSync( `dist/example/${names[i]}.es6.js`, orig + BYLINE )
+    fs.writeFileSync( `dist/demo/${names[i]}.es6.js`, orig + BYLINE )
 )
 
 
-//// 5. Transpile ES6 files in dist/example/’ to ES5
+//// 5. Transpile ES6 files in dist/demo/’ to ES5
 es6.forEach( (orig, i) => {
     const es5 = traceur.compile(orig, { blockBinding:true })
-    fs.writeFileSync( `dist/example/${names[i]}.es5.js`, es5 + BYLINE )
+    fs.writeFileSync( `dist/demo/${names[i]}.es5.js`, es5 + BYLINE )
 })
 
 

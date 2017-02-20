@@ -1,4 +1,4 @@
-//\\//\\ src/example/3-creating-buttons.es6.js
+//\\//\\ src/demo/Button-demo.es6.js
 
 
 
@@ -192,4 +192,4 @@ $('#dump').html( dumpsta.dump({ trails:true }) )
 
 
 
-//\\//\\ built by Oopish Make 0.0.3
+//\\//\\ built by Oopish Make 0.0.4
