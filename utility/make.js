@@ -1,7 +1,7 @@
 !function () { 'use strict'
 
 const NAME     = 'Oopish Make'
-    , VERSION  = '0.0.4'
+    , VERSION  = '0.0.5'
     , HOMEPAGE = 'http://make.oopish.com/'
 
     , BYLINE   = `\n\n\n\n//\\\\//\\\\ built by ${NAME} ${VERSION}\n`
@@ -33,7 +33,7 @@ Make Tasks
 2. Transpile the new ‘project.es6.js’ to ‘project.es5.js’
 3. Minify ‘project.es5.js’ to ‘project.es5.min.js’
 4. Copy files in ‘src/demo/’ to ‘dist/demo/’ (and change to lowercase)
-5. Transpile ES6 files in dist/demo/’ to ES5
+5. Transpile ES6 files in ‘dist/demo/’ to ES5
 6. Concatenate files in ‘src/test/’ to:
    - ‘dist/test/project-browser-test.es6.js’    (can only be run in a browser)
    - ‘dist/test/project-nonbrowser-test.es6.js’ (cannot be run in a browser)
@@ -49,9 +49,11 @@ This script belongs to ${HOMEPAGE}`
 
 
 //// Validate the environment.
-if ( '/utility/make.js' !== process.argv[1].slice(-16) )
+const nodePath   = process.argv.shift()
+const scriptPath = process.argv.shift()
+if ( '/utility/make.js' !== scriptPath.slice(-16) )
     return console.warn('Unexpected environment!')
-if ( ( process.cwd() !== process.argv[1].slice(0,-16) ) )
+if ( ( process.cwd() !== scriptPath.slice(0,-16) ) )
     return console.warn('Unexpected CWD, try:\n  $ cd /path/to/your/project/')
 if ('function' !== typeof require)
     return console.warn('Use Node.js instead:\n  $ node utility/make.js')
@@ -68,7 +70,13 @@ const fs = require('fs')
     , traceur = require('traceur/src/node/api.js')
 
 //// Set constants.
-const project = process.cwd().split('/').pop()
+const topline = (fs.readFileSync(`src/main/App.es6.js`)+'').split('\n')[0]
+const projectTC = topline.split(' ')[1]          // titlecase, eg 'FooBar'
+const projectLC = process.cwd().split('/').pop() // lowercase, eg 'foobar'
+if ( projectLC.toLowerCase() != projectLC) return console.warn(
+    `Project '${projectLC}' contains uppercase letters`)
+if ( projectTC.toLowerCase() != projectLC) return console.warn(
+    `Project '${projectLC}' is called '${projectTC}' in src/main/App.es6.js`)
 
 
 //// Declare variables.
@@ -95,7 +103,7 @@ src.forEach( name => {
     es6.push( fs.readFileSync('src/main/' + name)+'' )
 })
 es6 = es6.join('\n\n\n\n') + BYLINE
-fs.writeFileSync( `dist/main/${project}.es6.js`, es6 )
+fs.writeFileSync( `dist/main/${projectLC}.es6.js`, es6 )
 
 
 //// 2. Transpile the new ‘project.es6.js’ to ‘project.es5.js’
@@ -104,12 +112,12 @@ es5 = es5.replace( // correct a traceur error
     /efined' : \$traceurRuntime\.typeof\(global\)\) \? global : \(void 0\)\);/g
   , "efined' : $traceurRuntime.typeof(global)) ? global : this);"
 )
-fs.writeFileSync( `dist/main/${project}.es5.js`, es5 )
+fs.writeFileSync( `dist/main/${projectLC}.es5.js`, es5 )
 
 
 //// 3. Minify ‘project.es5.js’ to ‘project.es5.min.js’
-min = uglify.minify( es5, minConfig(`dist/main/${project}.es5.min.js`) )
-fs.writeFileSync( `dist/main/${project}.es5.min.js`, min.code + BYLINE )
+min = uglify.minify( es5, minConfig(`dist/main/${projectLC}.es5.min.js`) )
+fs.writeFileSync( `dist/main/${projectLC}.es5.min.js`, min.code + BYLINE )
 
 
 
@@ -132,7 +140,7 @@ es6.forEach( (orig, i) =>
 )
 
 
-//// 5. Transpile ES6 files in dist/demo/’ to ES5
+//// 5. Transpile ES6 files in ‘dist/demo/’ to ES5
 es6.forEach( (orig, i) => {
     const es5 = traceur.compile(orig, { blockBinding:true })
     fs.writeFileSync( `dist/demo/${names[i]}.es5.js`, es5 + BYLINE )
@@ -160,23 +168,23 @@ src.forEach( name => {
 
 //// - ‘dist/test/project-browser-test.es6.js’    (can only be run in a browser)
 es6.browser    = es6.browser.join('\n\n\n\n')    + BYLINE
-fs.writeFileSync( `dist/test/${project}-browser-test.es6.js`,  es6.browser )
+fs.writeFileSync( `dist/test/${projectLC}-browser-test.es6.js`,  es6.browser )
 
 //// - ‘dist/test/project-nonbrowser-test.es6.js’ (cannot be run in a browser)
 es6.nonbrowser = es6.nonbrowser.join('\n\n\n\n') + BYLINE
-fs.writeFileSync( `dist/test/${project}-nonbrowser-test.es6.js`,es6.nonbrowser )
+fs.writeFileSync( `dist/test/${projectLC}-nonbrowser-test.es6.js`,es6.nonbrowser )
 
 //// - ‘dist/test/project-universal-test.es6.js’  (can run anywhere)
 es6.universal  = es6.universal.join('\n\n\n\n')  + BYLINE
-fs.writeFileSync( `dist/test/${project}-universal-test.es6.js`, es6.universal )
+fs.writeFileSync( `dist/test/${projectLC}-universal-test.es6.js`, es6.universal )
 
 
 //// 7. Transpile the ‘browser’ and ‘universal’ files to ES5
 es5 = {}
 es5.browser    = traceur.compile(es6.browser,   { blockBinding:true }) + BYLINE
-fs.writeFileSync( `dist/test/${project}-browser-test.es5.js`,    es5.browser )
+fs.writeFileSync( `dist/test/${projectLC}-browser-test.es5.js`,    es5.browser )
 es5.universal  = traceur.compile(es6.universal, { blockBinding:true }) + BYLINE
-fs.writeFileSync( `dist/test/${project}-universal-test.es5.js`,  es5.universal )
+fs.writeFileSync( `dist/test/${projectLC}-universal-test.es5.js`,  es5.universal )
 
 
 
