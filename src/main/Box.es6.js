@@ -35,7 +35,7 @@ ROOT.Dumpsta.Box = class {
     render (config) {
         const { top, left, width, height, mode, me } = this
         const grid   = this.app.grid
-        const c      = this[ this.mode ]
+        const c      = this[ me.mode ] || this.char //@todo debug, so `|| this.char is not needed`
         const length = c.length // `c[i % length]` allows multi-char fills
 
         if (1 > width || 1 > height) return // invisible

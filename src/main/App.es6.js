@@ -3,7 +3,7 @@
 !function (ROOT) { 'use strict'
 
 const NAME     = 'Dumpsta'
-    , VERSION  = '0.0.4'
+    , VERSION  = '0.0.5'
     , HOMEPAGE = 'http://dumpsta.loop.coop/'
 
 
@@ -109,7 +109,7 @@ const Dumpsta = ROOT.Dumpsta = class {
                 ids[this.focus].click()
 
         //// Deal with a mouse event.
-        } else {
+        } else if (config.mode) {
 
             this.els.forEach( el => el.mode = 'focus' == el.mode ? 'focus' : 'char' ) // reset all modes
             const x  = Math.floor(this.width  * config.x)
