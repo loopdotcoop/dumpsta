@@ -7,7 +7,8 @@ jQuery(function($) {
     el: window.Dumpsta.Table,
     top: 10,
     left: 36,
-    title: 'Table Zero'
+    title: 'Table Zero',
+    rows: [['Header ', 'Goes   ', 'In     ', 'Here   '], [55.3, 14.404, -17.6, 4e3]]
   });
   var table1 = dumpsta.add({
     el: window.Dumpsta.Table,
@@ -15,7 +16,7 @@ jQuery(function($) {
     left: 10,
     auto: true,
     title: 'Table One',
-    rows: [[1, 2, 3], ['A', 'B', 'C'], [null, undefined, true, false]]
+    rows: []
   });
   var table2 = dumpsta.add({
     el: window.Dumpsta.Table,
@@ -123,7 +124,7 @@ jQuery(function($) {
     el: window.Dumpsta.Table,
     top: 16,
     left: 65,
-    width: 8,
+    width: 12,
     height: 5,
     title: 'Table Fifteen'
   });
@@ -131,11 +132,13 @@ jQuery(function($) {
   dumpsta.edit({
     id: table0,
     left: 28,
-    top: 8
+    top: 15,
+    rows: [['Header ', 'Goes  ', 'In   ', 'Here '], [15.3, 4.404, -7.6, 1e3]]
   });
   dumpsta.edit({
     id: table1,
-    title: 'Table One!'
+    title: 'Table One!',
+    rows: [[1, 2, 3], ['A', 'B', 'C'], [null, undefined, true, false]]
   });
   $('#dump').html(dumpsta.dump({trails: true}));
 });

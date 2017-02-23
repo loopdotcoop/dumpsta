@@ -14,8 +14,15 @@ ROOT.Dumpsta.Button = class {
           , width:  null // if set in `config.width`, we switch off auto-width
           , auto:   true // auto-width overrides `width`
           , height: 3
-          , char:   ' ' // passed to Box’s constructor
           , text:   ''  // passed to Label’s constructor
+          , char:   ' ' // passed to Box’s constructor
+          , down:     null
+          , focus:    null
+          , hover:    null
+          , inert:    null
+          , mode:     'char'
+          , click:    null
+          , me:       this
         }
         Object.assign(this, defaults, config, { app })
 
@@ -35,6 +42,7 @@ ROOT.Dumpsta.Button = class {
           , center: this.left  + Math.floor( (this.width) / 2 )
           , width:  this.width - 2
           , text:   this.text
+          , me:     this.me
         }, app)
     }
 

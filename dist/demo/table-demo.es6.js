@@ -18,6 +18,10 @@ let table0 = dumpsta.add({
   , top:    10
   , left:   36
   , title:  'Table Zero'
+  , rows:   [
+        [ 'Header ', 'Goes   ' ,'In     ', 'Here   ' ]
+      , [ 55.3,      14.404,    -17.6,     4e3       ]
+    ]
 })
 
 //// Create a Table with extra width, containing the text 'Table One'.
@@ -27,11 +31,7 @@ let table1 = dumpsta.add({
   , left:   10
   , auto:   true
   , title:  'Table One'
-  , rows:   [
-        [  1 ,  2 ,  3  ]
-      , [ 'A', 'B', 'C' ]
-      , [ null, undefined, true, false ]
-    ]
+  , rows:   []
 })
 
 //// Create a 1x1 Table in the top left corner.
@@ -167,7 +167,7 @@ let table15 = dumpsta.add({
     el:     window.Dumpsta.Table
   , top:    16
   , left:   65
-  , width:  8
+  , width:  12
   , height: 5
   , title:  'Table Fifteen'
 })
@@ -179,13 +179,22 @@ $('#dump').html( dumpsta.dump() )
 dumpsta.edit({
     id:     table0
   , left:   28
-  , top:    8
+  , top:    15
+  , rows:   [
+        [ 'Header ', 'Goes  ' ,'In   ', 'Here ' ]
+      , [ 15.3,      4.404,    -7.6,     1e3       ]
+    ]
 })
 
 //// Change the 'Table One' text.
 dumpsta.edit({
     id:     table1
   , title:  'Table One!'
+  , rows:   [
+        [  1 ,  2 ,  3  ]
+      , [ 'A', 'B', 'C' ]
+      , [ null, undefined, true, false ]
+    ]
 })
 
 //// Render, without wiping the previous render.

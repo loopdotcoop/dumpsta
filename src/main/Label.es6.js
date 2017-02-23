@@ -16,6 +16,9 @@ ROOT.Dumpsta.Label = class {
           , width:  null // if set in `config.width`, we switch off auto-width
           , auto:   true // auto-width overrides `width`
           , text:   ''
+          , mode:   'char'
+          , click:  null
+          , me:     this
         }
         Object.assign(this, defaults, config, { app })
 
@@ -27,7 +30,7 @@ ROOT.Dumpsta.Label = class {
     }
 
     render (config) {
-        const { top, left, center, right, width, auto, text } = this
+        const { top, left, center, right, width, auto, text, me } = this
         const grid   = this.app.grid
         const length = text.length
 
@@ -56,7 +59,7 @@ ROOT.Dumpsta.Label = class {
             for (let x=begin,c; x<begin+w; x++,pos++)
                 if (grid[top][x]) // not outside the left or right bounds
                     if (c = text[pos])
-                        grid[top][x] = {c} // effectively `{ c:text[pos] }`
+                        grid[top][x] = { c, me } // `{ c:text[pos], me:me }`
 
     }
 

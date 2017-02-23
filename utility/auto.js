@@ -377,7 +377,7 @@ function generateDemoPage (name) {
   <script>!function(d,i,s){i=~~d.cookie.split('~')[1];s=d.getElementById('es')
   if(s)s.options[i].selected=true}(document)</script>
 
-  <!--Header and Navigation menu -->
+  <!-- Header and Navigation menu -->
   <h1 style="display:inline">${projectTC} <span id="version">0.0.*</span></h1>
 
   <a href="../index.html">Home</a> &nbsp;

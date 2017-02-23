@@ -14,40 +14,44 @@ ROOT.Dumpsta.Border = class {
           , width:  app.width
           , height: app.height
           , title:  ''
+          , mode:   'char'
+          , click:  null
+          , me:     this
         }
         Object.assign(this, defaults, config, { app })
     }
 
     render (config) { //@todo don’t draw outside the left or right bounds
-        const { top, left, width, height, title } = this
+        const { top, left, width, height, title, me } = this
 
         if (1 > width || 1 > height) return // invisible
 
         //// Handy constants.
         const grid   = this.app.grid
-        const right  = left + width  - 1
-        const bottom = top  + height - 1
+            , right  = left + width  - 1
+            , bottom = top  + height - 1
+            , active = 'char' != me.mode && me.click
 
         //// Draw the top border.
         if (grid[top]) {
-            grid[top][left] = { c:"." }
+            grid[top][left]  = { c:".", me }
             for (let x=left+1; x<right; x++)
-                grid[top][x] = { c:"-" }
-            grid[top][right] = { c:"." }
+                grid[top][x] = { c:active?"=":"—", me }
+            grid[top][right] = { c:".", me }
         }
 
         //// Draw the left and right borders.
         for (let y=top+1; y<bottom; y++)
             if (grid[y])
-                grid[y][left]  = { c:"|" }
-              , grid[y][right] = { c:"|" }
+                grid[y][left]  = { c:"|", me }
+              , grid[y][right] = { c:"|", me }
 
         //// Draw the bottom border.
         if (grid[bottom]) { // don’t fall off the bottom of the grid
-            grid[bottom][left] = { c:"'" }
+            grid[bottom][left]  = { c:active?'"':"'", me }
             for (let x=left+1; x<right; x++)
-                grid[bottom][x] = { c:"=" }
-            grid[bottom][right] = { c:"'" }
+                grid[bottom][x] = { c:active?"≠":"=", me }
+            grid[bottom][right] = { c:active?'"':"'", me }
         }
 
         //// Draw the title.
@@ -55,7 +59,7 @@ ROOT.Dumpsta.Border = class {
             const len = Math.min(title.length, width-2)
             let x = Math.ceil(left + width / 2) - Math.ceil(len / 2)
             for (let i=0; i<len; i++, x++)
-                grid[top][x] = { c:title[i] }
+                grid[top][x] = { c:title[i], me }
         }
 
     }

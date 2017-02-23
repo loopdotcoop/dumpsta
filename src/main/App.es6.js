@@ -3,7 +3,7 @@
 !function (ROOT) { 'use strict'
 
 const NAME     = 'Dumpsta'
-    , VERSION  = '0.0.3'
+    , VERSION  = '0.0.4'
     , HOMEPAGE = 'http://dumpsta.loop.coop/'
 
 
@@ -23,9 +23,10 @@ const Dumpsta = ROOT.Dumpsta = class {
         Object.assign(this, defaults, config)
 
         //// Prepare to record new Elements.
-        this.id  = 0  // the first Element’s id will be `0`
-        this.els = [] // iterate through Elements by z-index
-        this.ids = {} // lookup Elements by id
+        this.id    = 0  // the first Element’s id will be `0`
+        this.els   = [] // iterate through Elements by z-index
+        this.ids   = {} // lookup Elements by id
+        this.focus = 0  // id of the Element which currently has focus
 
         //// Initialise the grid by filling it with empty rows...
         this.grid = []
@@ -86,6 +87,49 @@ const Dumpsta = ROOT.Dumpsta = class {
         const el = this.ids[config.id]
         if (! el) return // no such element
         el.edit(config)
+    }
+
+    //// Triggers events on Elements.
+    trigger (config) {
+        const { ids, id } = this
+
+        //// Deal with a ‘Tab’ trigger, eg `{ key:'tab', shift:false }`.
+        if ('tab' == config.key) {
+            if (ids[this.focus]) ids[this.focus].mode = 'char'
+            const modifier = config.shift ? id-1 : 1
+            for (let i=0; i<id; i++) {
+                this.focus = (this.focus + modifier) % id
+                if (ids[this.focus].click) break // got a clickable Element
+            }
+            if (ids[this.focus]) ids[this.focus].mode = 'focus'
+
+        //// Deal with ‘Enter’ or ‘Return’ being pressed, eg `{ key:'enter' }`.
+        } else if ('enter' == config.key) {
+            if (ids[this.focus] && ids[this.focus].click)
+                ids[this.focus].click()
+
+        //// Deal with a mouse event.
+        } else {
+
+            this.els.forEach( el => el.mode = 'focus' == el.mode ? 'focus' : 'char' ) // reset all modes
+            const x  = Math.floor(this.width  * config.x)
+                , y  = Math.floor(this.height * config.y)
+                , me = this.grid[y][x].me
+            if (! me) return // not interactive
+            me.mode = 'focus' == me.mode ? 'focus' : config.mode
+            if (me.click) {
+                if (config.click) {
+                    me.click() // note that clicking switches focus
+                    if (ids[this.focus]) ids[this.focus].mode = 'char'
+                    this.focus = me.id
+                    me.mode = 'focus'
+                }
+                return 'pointer'
+            } else {
+                return 'default'
+            }
+
+        }
     }
 
 }
