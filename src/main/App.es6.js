@@ -3,7 +3,7 @@
 !function (ROOT) { 'use strict'
 
 const NAME     = 'Dumpsta'
-    , VERSION  = '0.0.5'
+    , VERSION  = '0.0.6'
     , HOMEPAGE = 'http://dumpsta.loop.coop/'
 
 
@@ -107,6 +107,14 @@ const Dumpsta = ROOT.Dumpsta = class {
         } else if ('enter' == config.key) {
             if (ids[this.focus] && ids[this.focus].click)
                 ids[this.focus].click()
+
+        //// Deal with a direct call to focus on an Element.
+        } else if (null != config.focus) {
+            if (ids[config.focus] && ids[config.focus].click) {
+                if (ids[this.focus]) ids[this.focus].mode = 'char'
+                this.focus = config.focus
+                ids[this.focus].mode = 'focus'
+            }
 
         //// Deal with a mouse event.
         } else if (config.mode) {

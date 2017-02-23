@@ -2,7 +2,7 @@
 !function(ROOT) {
   'use strict';
   var NAME = 'Dumpsta',
-      VERSION = '0.0.5',
+      VERSION = '0.0.6',
       HOMEPAGE = 'http://dumpsta.loop.coop/';
   var Dumpsta = ROOT.Dumpsta = ($traceurRuntime.createClass)(function() {
     var config = arguments[0] !== (void 0) ? arguments[0] : {};
@@ -89,6 +89,13 @@
       } else if ('enter' == config.key) {
         if (ids[this.focus] && ids[this.focus].click)
           ids[this.focus].click();
+      } else if (null != config.focus) {
+        if (ids[config.focus] && ids[config.focus].click) {
+          if (ids[this.focus])
+            ids[this.focus].mode = 'char';
+          this.focus = config.focus;
+          ids[this.focus].mode = 'focus';
+        }
       } else if (config.mode) {
         this.els.forEach(function(el) {
           return el.mode = 'focus' == el.mode ? 'focus' : 'char';
@@ -165,10 +172,10 @@
       for (var y = top + 1; y < bottom; y++)
         if (grid[y])
           grid[y][left] = {
-            c: "|",
+            c: active ? '|' : "¦",
             me: me
           }, grid[y][right] = {
-            c: "|",
+            c: active ? '|' : "¦",
             me: me
           };
       if (grid[bottom]) {

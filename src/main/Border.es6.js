@@ -43,8 +43,8 @@ ROOT.Dumpsta.Border = class {
         //// Draw the left and right borders.
         for (let y=top+1; y<bottom; y++)
             if (grid[y])
-                grid[y][left]  = { c:"|", me }
-              , grid[y][right] = { c:"|", me }
+                grid[y][left]  = { c:active?'|':"¦", me }
+              , grid[y][right] = { c:active?'|':"¦", me }
 
         //// Draw the bottom border.
         if (grid[bottom]) { // don’t fall off the bottom of the grid
