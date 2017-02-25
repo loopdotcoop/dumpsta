@@ -54,6 +54,7 @@ ECMASwitch.load = function (path, names) {
       , E = '"></'+'script>' // end
     names = names || []
     for (var i=0; i<names.length; i++) if (names[i][f]) s.push( names[i][f] )
+    s.unshift(path + 'lib/polyfill.js') //@TODO only load for legacy browsers
     s.unshift(path + 'lib/jquery-3.1.1.min.js') // start with jQuery
     d.write(B + s.join(E + B) + E)
 }
