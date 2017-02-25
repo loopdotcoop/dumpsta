@@ -1,6 +1,5 @@
 //// Dumpsta //// 0.0.* //// February 2017 //// http://dumpsta.loop.coop/ //////
 
-
 //// Node.js: 7.2.0
 //// Rhino:   [not tested yet]
 
@@ -14,13 +13,14 @@
 
 
 if ('function' != typeof jQuery) throw Error('jQuery not found')
-jQuery( function($) { 'use strict'
+jQuery( function($) {
 
 
 
 
-test('The Table class', () => {
-    is('function' == typeof Dumpsta.Table   , '`Dumpsta.Table` is a function')
+test('The El.Box class', () => {
+    is('function' == typeof Dumpsta.El.Box
+      , '`Dumpsta.El.Box` is a function')
 })
 
 

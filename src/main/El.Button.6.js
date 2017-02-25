@@ -3,9 +3,10 @@
 !function (ROOT) { 'use strict'
 
 
-ROOT.Dumpsta.Button = class {
+ROOT.Dumpsta.El.Button = class extends ROOT.Dumpsta.El {
 
     constructor (config, app) {
+        super(config, app)
 
         //// Record configuration.
         const defaults = {
@@ -33,11 +34,11 @@ ROOT.Dumpsta.Button = class {
         if (this.auto) this.width = this.text.length + 4
 
         //// A Button is composed of a Box of spaces, a Border...
-        this.box    = new ROOT.Dumpsta.Box(this, app)
-        this.border = new ROOT.Dumpsta.Border(this, app)
+        this.box    = new ROOT.Dumpsta.El.Box(this, app)
+        this.border = new ROOT.Dumpsta.El.Border(this, app)
 
         //// ...and a Label.
-        this.label = new ROOT.Dumpsta.Label({
+        this.label = new ROOT.Dumpsta.El.Label({
             top:    this.top   + Math.floor( (this.height-1) / 2 )
           , center: this.left  + Math.floor( (this.width) / 2 )
           , width:  this.width - 2

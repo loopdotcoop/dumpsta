@@ -18,8 +18,9 @@ jQuery( function($) {
 
 
 
-test('The Border class', () => {
-    is('function' == typeof Dumpsta.Border   , '`Dumpsta.Border` is a function')
+test('The El.Border class', () => {
+    is('function' == typeof Dumpsta.El.Border
+      , '`Dumpsta.El.Border` is a function')
 })
 
 

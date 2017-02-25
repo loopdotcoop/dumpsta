@@ -10,14 +10,14 @@ let dumpsta = new window.Dumpsta({
 
 //// Create a left-aligned auto-width Label with the text 'Label Zero.
 let label0 = dumpsta.add({
-    el:     window.Dumpsta.Label
+    el:     window.Dumpsta.El.Label
   , top:    11
   , text:   'Label Zero'
 })
 
 //// Overlay it with 'Label One'.
 let label1 = dumpsta.add({
-    el:     window.Dumpsta.Label
+    el:     window.Dumpsta.El.Label
   , top:    11
   , left:   9
   , text:   'Label One'
@@ -25,7 +25,7 @@ let label1 = dumpsta.add({
 
 //// Create a left-aligned 1x1 Label showing the 'L' of 'Label Two'.
 let label2 = dumpsta.add({
-    el:     window.Dumpsta.Label
+    el:     window.Dumpsta.El.Label
   , top:    0
   , left:   0
   , width:  1
@@ -34,7 +34,7 @@ let label2 = dumpsta.add({
 
 //// Create a right-aligned 1x1 Label showing the '!' of 'Label Three!'.
 let label3 = dumpsta.add({
-    el:     window.Dumpsta.Label
+    el:     window.Dumpsta.El.Label
   , top:    23
   , right:  80
   , width:  1
@@ -43,7 +43,7 @@ let label3 = dumpsta.add({
 
 //// Create 'Label Four' which extends one character beyond the right-edge.
 let label4 = dumpsta.add({
-    el:     window.Dumpsta.Label
+    el:     window.Dumpsta.El.Label
   , top:    3
   , right:  81
   , text:   'Label Four'
@@ -51,7 +51,7 @@ let label4 = dumpsta.add({
 
 //// Create 'Label Five' which extends one character beyond beyond the left-edge.
 let label5 = dumpsta.add({
-    el:     window.Dumpsta.Label
+    el:     window.Dumpsta.El.Label
   , top:    3
   , left:   -1
   , text:   'Label Five'
@@ -59,21 +59,21 @@ let label5 = dumpsta.add({
 
 //// Create 'Label Six' which is hidden below the bottom-edge.
 let label6 = dumpsta.add({
-    el:     window.Dumpsta.Label
+    el:     window.Dumpsta.El.Label
   , top:    24
   , text:   'Label Six'
 })
 
 //// Create 'Label Seven' which is hidden above the top-edge.
 let label7 = dumpsta.add({
-    el:     window.Dumpsta.Label
+    el:     window.Dumpsta.El.Label
   , top:    -1
   , text:   'Label Seven'
 })
 
 //// Create 'Label Eight', centered in the middle of the grid.
 let label8 = dumpsta.add({
-    el:     window.Dumpsta.Label
+    el:     window.Dumpsta.El.Label
   , top:    11
   , center: 40
   , text:   'Label Eight'
@@ -81,7 +81,7 @@ let label8 = dumpsta.add({
 
 //// Create 'Label Nine', aligned right against the right-edge of the grid.
 let label9 = dumpsta.add({
-    el:     window.Dumpsta.Label
+    el:     window.Dumpsta.El.Label
   , top:    11
   , right:  80
   , text:   'Label Nine'
@@ -89,7 +89,7 @@ let label9 = dumpsta.add({
 
 //// Create 'Label Ten', which is left aligned and truncated.
 let label10 = dumpsta.add({
-    el:     window.Dumpsta.Label
+    el:     window.Dumpsta.El.Label
   , top:    15
   , left:   0
   , width:  8
@@ -98,7 +98,7 @@ let label10 = dumpsta.add({
 
 //// Create 'Label Eleven', which is center aligned and truncated.
 let label11 = dumpsta.add({
-    el:     window.Dumpsta.Label
+    el:     window.Dumpsta.El.Label
   , top:    15
   , center: 40
   , width:  10
@@ -107,7 +107,7 @@ let label11 = dumpsta.add({
 
 //// Create 'Label Twelve', which is right aligned and truncated.
 let label12 = dumpsta.add({
-    el:     window.Dumpsta.Label
+    el:     window.Dumpsta.El.Label
   , top:    15
   , right:  80
   , width:  10
@@ -116,7 +116,7 @@ let label12 = dumpsta.add({
 
 //// Create 'Label Thirteen', which is left aligned and padded.
 let label13 = dumpsta.add({
-    el:     window.Dumpsta.Label
+    el:     window.Dumpsta.El.Label
   , top:    20
   , left:   0
   , width:  20
@@ -125,7 +125,7 @@ let label13 = dumpsta.add({
 
 //// Create 'Label Fourteen', which is center aligned and padded.
 let label14 = dumpsta.add({
-    el:     window.Dumpsta.Label
+    el:     window.Dumpsta.El.Label
   , top:    20
   , center: 40
   , width:  20
@@ -134,7 +134,7 @@ let label14 = dumpsta.add({
 
 //// Create 'Label Fifteen', which is right aligned and padded.
 let label15 = dumpsta.add({
-    el:     window.Dumpsta.Label
+    el:     window.Dumpsta.El.Label
   , top:    20
   , right:  80
   , width:  20

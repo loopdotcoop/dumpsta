@@ -18,8 +18,9 @@ jQuery( function($) {
 
 
 
-test('The Button class', () => {
-    is('function' == typeof Dumpsta.Button   , '`Dumpsta.Button` is a function')
+test('The El.Button class', () => {
+    is('function' == typeof Dumpsta.El.Button
+       , '`Dumpsta.El.Button` is a function')
 })
 
 

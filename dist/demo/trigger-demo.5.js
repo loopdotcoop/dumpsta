@@ -45,7 +45,7 @@ jQuery(function($) {
     $('#dump').html(dumpsta.dump());
   });
   var border0 = dumpsta.add({
-    el: window.Dumpsta.Border,
+    el: window.Dumpsta.El.Border,
     top: 4,
     left: 3,
     width: 16,
@@ -53,7 +53,7 @@ jQuery(function($) {
     title: 'Border Zero'
   });
   var box0 = dumpsta.add({
-    el: window.Dumpsta.Box,
+    el: window.Dumpsta.El.Box,
     top: 4,
     left: 21,
     width: 16,
@@ -68,7 +68,7 @@ jQuery(function($) {
     }
   });
   var button0 = dumpsta.add({
-    el: window.Dumpsta.Button,
+    el: window.Dumpsta.El.Button,
     top: 4,
     left: 40,
     text: 'Button Zero',
@@ -77,14 +77,14 @@ jQuery(function($) {
     }
   });
   var button1 = dumpsta.add({
-    el: window.Dumpsta.Button,
+    el: window.Dumpsta.El.Button,
     top: 8,
     left: 40,
     text: 'Button One',
     click: null
   });
   var button2 = dumpsta.add({
-    el: window.Dumpsta.Button,
+    el: window.Dumpsta.El.Button,
     top: 12,
     left: 40,
     text: 'Button Two',
@@ -93,14 +93,14 @@ jQuery(function($) {
     }
   });
   var label0 = dumpsta.add({
-    el: window.Dumpsta.Label,
+    el: window.Dumpsta.El.Label,
     top: 10,
     left: 3,
     width: 16,
     text: 'Label Zero'
   });
   var table0 = dumpsta.add({
-    el: window.Dumpsta.Table,
+    el: window.Dumpsta.El.Table,
     top: 4,
     left: 60,
     width: 16,

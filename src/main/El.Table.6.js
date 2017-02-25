@@ -3,9 +3,10 @@
 !function (ROOT) { 'use strict'
 
 
-ROOT.Dumpsta.Table = class {
+ROOT.Dumpsta.El.Table = class extends ROOT.Dumpsta.El {
 
     constructor (config, app) {
+        super(config, app)
 
         //// Record configuration.
         const defaults = {
@@ -33,8 +34,8 @@ ROOT.Dumpsta.Table = class {
         if (null != this.height && ! config.auto) this.auto = false
 
         //// A Table is composed of a Box, a Border, and an array of Labels.
-        this.box    = new ROOT.Dumpsta.Box({ me:this.me }, app)
-        this.border = new ROOT.Dumpsta.Border({ me:this.me }, app)
+        this.box    = new ROOT.Dumpsta.El.Box({ me:this.me }, app)
+        this.border = new ROOT.Dumpsta.El.Border({ me:this.me }, app)
         this.labels = []
 
         //// Creating a new Table is just a special case of editing a Table.
@@ -82,7 +83,7 @@ ROOT.Dumpsta.Table = class {
         this.labels = []
         for (let r=0,row; row=rows[r]; r++)
             for (let c=0; c<cols; c++)
-                this.labels.push( new ROOT.Dumpsta.Label({
+                this.labels.push( new ROOT.Dumpsta.El.Label({
                     top:    this.top   + 1 + r
                   , left:   lefts[c]
                   , width:  maxs[c]
@@ -147,7 +148,7 @@ ROOT.Dumpsta.Table = class {
         this.labels = []
         for (let r=0,row; row=rows[r]; r++)
             for (let c=0; c<cols; c++)
-                this.labels.push( new ROOT.Dumpsta.Label({
+                this.labels.push( new ROOT.Dumpsta.El.Label({
                     top:    this.top   + 1 + r
                   , left:   lefts[c]
                   , width:  maxs[c]

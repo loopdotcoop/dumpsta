@@ -10,7 +10,7 @@ var dumpsta = new window.Dumpsta({
 
 //// Create a small Box filled with hash ('#') characters.
 var box0 = dumpsta.add({
-    el:     window.Dumpsta.Box
+    el:     window.Dumpsta.El.Box
   , top:    12
   , left:   40
   , width:  10
@@ -20,7 +20,7 @@ var box0 = dumpsta.add({
 
 //// Overlay it with a Box filled with 'X' characters.
 var box1 = dumpsta.add({
-    el:     window.Dumpsta.Box
+    el:     window.Dumpsta.El.Box
   , top:    10
   , left:   28
   , width:  15
@@ -30,7 +30,7 @@ var box1 = dumpsta.add({
 
 //// Create a 1x1 Box which is just a single asterisk ('*') character.
 var box2 = dumpsta.add({
-    el:     window.Dumpsta.Box
+    el:     window.Dumpsta.El.Box
   , top:    0
   , left:   0
   , width:  1
@@ -40,7 +40,7 @@ var box2 = dumpsta.add({
 
 //// Create a 1x1 Box which is just a single underscore ('_') character.
 var box3 = dumpsta.add({
-    el:     window.Dumpsta.Box
+    el:     window.Dumpsta.El.Box
   , top:    23
   , left:   79
   , width:  1
@@ -50,7 +50,7 @@ var box3 = dumpsta.add({
 
 //// Create a Box which extends beyond the right-edge, filled with 'right-'.
 var box4 = dumpsta.add({
-    el:     window.Dumpsta.Box
+    el:     window.Dumpsta.El.Box
   , top:    3
   , left:   70
   , width:  20
@@ -60,7 +60,7 @@ var box4 = dumpsta.add({
 
 //// Create a Box which extends beyond the left-edge, filled with 'left-'.
 var box5 = dumpsta.add({
-    el:     window.Dumpsta.Box
+    el:     window.Dumpsta.El.Box
   , top:    3
   , left:   -10
   , width:  20
@@ -70,7 +70,7 @@ var box5 = dumpsta.add({
 
 //// Create a Box which extends beyond the bottom-edge, filled with 'bottom-'.
 var box6 = dumpsta.add({
-    el:     window.Dumpsta.Box
+    el:     window.Dumpsta.El.Box
   , top:    20
   , left:   40
   , width:  2
@@ -80,7 +80,7 @@ var box6 = dumpsta.add({
 
 //// Create a Box which extends beyond the top-edge, filled with 'top-'.
 var box7 = dumpsta.add({
-    el:     window.Dumpsta.Box
+    el:     window.Dumpsta.El.Box
   , top:    -4
   , left:   40
   , width:  2
@@ -90,7 +90,7 @@ var box7 = dumpsta.add({
 
 //// Create 'Box Eight', which is 3x3.
 var box8 = dumpsta.add({
-    el:     window.Dumpsta.Box
+    el:     window.Dumpsta.El.Box
   , top:    12
   , left:   4
   , width:  3
@@ -100,7 +100,7 @@ var box8 = dumpsta.add({
 
 //// Create 'Box Nine', which is 2x3.
 var box9 = dumpsta.add({
-    el:     window.Dumpsta.Box
+    el:     window.Dumpsta.El.Box
   , top:    12
   , left:   12
   , width:  2
@@ -110,7 +110,7 @@ var box9 = dumpsta.add({
 
 //// Create 'Box Ten', which is 1x3.
 var box10 = dumpsta.add({
-    el:     window.Dumpsta.Box
+    el:     window.Dumpsta.El.Box
   , top:    12
   , left:   17
   , width:  1
@@ -120,7 +120,7 @@ var box10 = dumpsta.add({
 
 //// Create 'Box Eleven', which is 0x3.
 var box11 = dumpsta.add({
-    el:     window.Dumpsta.Box
+    el:     window.Dumpsta.El.Box
   , top:    12
   , left:   21
   , width:  0
@@ -130,7 +130,7 @@ var box11 = dumpsta.add({
 
 //// Create 'Box Twelve', which is 3x2.
 var box12 = dumpsta.add({
-    el:     window.Dumpsta.Box
+    el:     window.Dumpsta.El.Box
   , top:    16
   , left:   4
   , width:  3
@@ -140,7 +140,7 @@ var box12 = dumpsta.add({
 
 //// Create 'Box Thirteen', which is 3x1.
 var box13 = dumpsta.add({
-    el:     window.Dumpsta.Box
+    el:     window.Dumpsta.El.Box
   , top:    19
   , left:   4
   , width:  3
@@ -150,7 +150,7 @@ var box13 = dumpsta.add({
 
 //// Create 'Box Fourteen', which is 3x0.
 var box14 = dumpsta.add({
-    el:     window.Dumpsta.Box
+    el:     window.Dumpsta.El.Box
   , top:    21
   , left:   4
   , width:  3

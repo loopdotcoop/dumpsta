@@ -3,9 +3,10 @@
 !function (ROOT) { 'use strict'
 
 
-ROOT.Dumpsta.Border = class {
+ROOT.Dumpsta.El.Border = class extends ROOT.Dumpsta.El {
 
     constructor (config, app) {
+        super(config, app)
 
         //// Record configuration.
         const defaults = {

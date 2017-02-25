@@ -13,37 +13,44 @@ jQuery(function($) {
 if ('function' != typeof jQuery)
   throw Error('jQuery not found');
 jQuery(function($) {
-  test('The Border class', function() {
-    is('function' == typeof Dumpsta.Border, '`Dumpsta.Border` is a function');
+  test('The El class', function() {
+    is('function' == typeof Dumpsta.El, '`Dumpsta.El` is a function');
   });
 });
 if ('function' != typeof jQuery)
   throw Error('jQuery not found');
 jQuery(function($) {
-  test('The Box class', function() {
-    is('function' == typeof Dumpsta.Box, '`Dumpsta.Box` is a function');
+  test('The El.Border class', function() {
+    is('function' == typeof Dumpsta.El.Border, '`Dumpsta.El.Border` is a function');
   });
 });
 if ('function' != typeof jQuery)
   throw Error('jQuery not found');
 jQuery(function($) {
-  test('The Button class', function() {
-    is('function' == typeof Dumpsta.Button, '`Dumpsta.Button` is a function');
+  test('The El.Box class', function() {
+    is('function' == typeof Dumpsta.El.Box, '`Dumpsta.El.Box` is a function');
   });
 });
 if ('function' != typeof jQuery)
   throw Error('jQuery not found');
 jQuery(function($) {
-  test('The Label class', function() {
-    is('function' == typeof Dumpsta.Label, '`Dumpsta.Label` is a function');
+  test('The El.Button class', function() {
+    is('function' == typeof Dumpsta.El.Button, '`Dumpsta.El.Button` is a function');
+  });
+});
+if ('function' != typeof jQuery)
+  throw Error('jQuery not found');
+jQuery(function($) {
+  test('The El.Label class', function() {
+    is('function' == typeof Dumpsta.El.Label, '`Dumpsta.El.Label` is a function');
   });
 });
 if ('function' != typeof jQuery)
   throw Error('jQuery not found');
 jQuery(function($) {
   'use strict';
-  test('The Table class', function() {
-    is('function' == typeof Dumpsta.Table, '`Dumpsta.Table` is a function');
+  test('The El.Table class', function() {
+    is('function' == typeof Dumpsta.El.Table, '`Dumpsta.El.Table` is a function');
   });
 });
 //# sourceURL=<compile-source>

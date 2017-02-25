@@ -39,7 +39,7 @@ test('The Dumpsta class', () => {
 
 
 
-//\\//\\ src/test/Border-universal-test.6.js
+//\\//\\ src/test/El-universal-test.6.js
 
 
 
@@ -63,8 +63,8 @@ jQuery( function($) {
 
 
 
-test('The Border class', () => {
-    is('function' == typeof Dumpsta.Border   , '`Dumpsta.Border` is a function')
+test('The El class', () => {
+    is('function' == typeof Dumpsta.El           , '`Dumpsta.El` is a function')
 })
 
 
@@ -75,7 +75,7 @@ test('The Border class', () => {
 
 
 
-//\\//\\ src/test/Box-universal-test.6.js
+//\\//\\ src/test/El.Border-universal-test.6.js
 
 
 
@@ -99,8 +99,9 @@ jQuery( function($) {
 
 
 
-test('The Box class', () => {
-    is('function' == typeof Dumpsta.Box         , '`Dumpsta.Box` is a function')
+test('The El.Border class', () => {
+    is('function' == typeof Dumpsta.El.Border
+      , '`Dumpsta.El.Border` is a function')
 })
 
 
@@ -111,7 +112,7 @@ test('The Box class', () => {
 
 
 
-//\\//\\ src/test/Button-universal-test.6.js
+//\\//\\ src/test/El.Box-universal-test.6.js
 
 
 
@@ -135,8 +136,9 @@ jQuery( function($) {
 
 
 
-test('The Button class', () => {
-    is('function' == typeof Dumpsta.Button   , '`Dumpsta.Button` is a function')
+test('The El.Box class', () => {
+    is('function' == typeof Dumpsta.El.Box
+      , '`Dumpsta.El.Box` is a function')
 })
 
 
@@ -147,7 +149,7 @@ test('The Button class', () => {
 
 
 
-//\\//\\ src/test/Label-universal-test.6.js
+//\\//\\ src/test/El.Button-universal-test.6.js
 
 
 
@@ -171,8 +173,9 @@ jQuery( function($) {
 
 
 
-test('The Label class', () => {
-    is('function' == typeof Dumpsta.Label     , '`Dumpsta.Label` is a function')
+test('The El.Button class', () => {
+    is('function' == typeof Dumpsta.El.Button
+       , '`Dumpsta.El.Button` is a function')
 })
 
 
@@ -183,7 +186,44 @@ test('The Label class', () => {
 
 
 
-//\\//\\ src/test/Table-universal-test.6.js
+//\\//\\ src/test/El.Label-universal-test.6.js
+
+
+
+//// Dumpsta //// 0.0.* //// February 2017 //// http://dumpsta.loop.coop/ //////
+
+//// Node.js: 7.2.0
+//// Rhino:   [not tested yet]
+
+//// Windows XP: Firefox 6, Chrome 15 (and probably lower), Opera 12.10
+//// Windows 7:  IE 9, Safari 5.1
+//// OS X 10.6:  Firefox 6, Chrome 16 (and probably lower), Opera 12, Safari 5.1
+//// iOS:        iPad 3rd (iOS 6) Safari, iPad Air (iOS 7) Chrome
+//// Android:    Xperia Tipo (Android 4), Pixel XL (Android 7.1)
+
+
+
+
+if ('function' != typeof jQuery) throw Error('jQuery not found')
+jQuery( function($) {
+
+
+
+
+test('The El.Label class', () => {
+    is('function' == typeof Dumpsta.El.Label
+      , '`Dumpsta.El.Label` is a function')
+})
+
+
+
+
+})
+
+
+
+
+//\\//\\ src/test/El.Table-universal-test.6.js
 
 
 
@@ -208,8 +248,9 @@ jQuery( function($) { 'use strict'
 
 
 
-test('The Table class', () => {
-    is('function' == typeof Dumpsta.Table   , '`Dumpsta.Table` is a function')
+test('The El.Table class', () => {
+    is('function' == typeof Dumpsta.El.Table
+      , '`Dumpsta.El.Table` is a function')
 })
 
 

@@ -4,34 +4,34 @@ if ('function' != typeof jQuery)
 jQuery(function($) {
   var dumpsta = new window.Dumpsta({char: ': · · · · '});
   var button0 = dumpsta.add({
-    el: window.Dumpsta.Button,
+    el: window.Dumpsta.El.Button,
     top: 10,
     left: 36,
     text: 'Button Zero'
   });
   var button1 = dumpsta.add({
-    el: window.Dumpsta.Button,
+    el: window.Dumpsta.El.Button,
     top: 7,
     left: 10,
     width: 20,
     text: 'Button One'
   });
   var button2 = dumpsta.add({
-    el: window.Dumpsta.Button,
+    el: window.Dumpsta.El.Button,
     top: 0,
     left: 0,
     width: 1,
     height: 1
   });
   var button3 = dumpsta.add({
-    el: window.Dumpsta.Button,
+    el: window.Dumpsta.El.Button,
     top: 22,
     left: 77,
     width: 1,
     height: 1
   });
   var button4 = dumpsta.add({
-    el: window.Dumpsta.Button,
+    el: window.Dumpsta.El.Button,
     top: 7,
     left: 66,
     width: 20,
@@ -39,7 +39,7 @@ jQuery(function($) {
     text: 'Button Four'
   });
   var button5 = dumpsta.add({
-    el: window.Dumpsta.Button,
+    el: window.Dumpsta.El.Button,
     top: 1,
     left: -7,
     width: 20,
@@ -47,7 +47,7 @@ jQuery(function($) {
     text: 'Button Five'
   });
   var button6 = dumpsta.add({
-    el: window.Dumpsta.Button,
+    el: window.Dumpsta.El.Button,
     top: 20,
     left: 14,
     width: 40,
@@ -55,7 +55,7 @@ jQuery(function($) {
     text: 'Button Six'
   });
   var button7 = dumpsta.add({
-    el: window.Dumpsta.Button,
+    el: window.Dumpsta.El.Button,
     top: -2,
     left: 14,
     width: 40,
@@ -63,7 +63,7 @@ jQuery(function($) {
     text: 'Button Seven'
   });
   var button8 = dumpsta.add({
-    el: window.Dumpsta.Button,
+    el: window.Dumpsta.El.Button,
     top: 12,
     left: 4,
     width: 3,
@@ -71,7 +71,7 @@ jQuery(function($) {
     text: 'Button Eight'
   });
   var button9 = dumpsta.add({
-    el: window.Dumpsta.Button,
+    el: window.Dumpsta.El.Button,
     top: 12,
     left: 12,
     width: 2,
@@ -79,7 +79,7 @@ jQuery(function($) {
     text: 'Button Nine'
   });
   var button10 = dumpsta.add({
-    el: window.Dumpsta.Button,
+    el: window.Dumpsta.El.Button,
     top: 12,
     left: 17,
     width: 1,
@@ -87,7 +87,7 @@ jQuery(function($) {
     text: 'Button Ten'
   });
   var button11 = dumpsta.add({
-    el: window.Dumpsta.Button,
+    el: window.Dumpsta.El.Button,
     top: 12,
     left: 21,
     width: 0,
@@ -95,7 +95,7 @@ jQuery(function($) {
     text: 'Button Eleven'
   });
   var button12 = dumpsta.add({
-    el: window.Dumpsta.Button,
+    el: window.Dumpsta.El.Button,
     top: 16,
     left: 4,
     width: 4,
@@ -103,7 +103,7 @@ jQuery(function($) {
     text: 'Button Twelve'
   });
   var button13 = dumpsta.add({
-    el: window.Dumpsta.Button,
+    el: window.Dumpsta.El.Button,
     top: 19,
     left: 4,
     width: 3,
@@ -111,7 +111,7 @@ jQuery(function($) {
     text: 'Button Thirteen'
   });
   var button14 = dumpsta.add({
-    el: window.Dumpsta.Button,
+    el: window.Dumpsta.El.Button,
     top: 22,
     left: 4,
     width: 3,
@@ -119,7 +119,7 @@ jQuery(function($) {
     text: 'Button Fourteen'
   });
   var button15 = dumpsta.add({
-    el: window.Dumpsta.Button,
+    el: window.Dumpsta.El.Button,
     top: 16,
     left: 65,
     width: 8,

@@ -7,7 +7,7 @@
 !function (ROOT) { 'use strict'
 
 const NAME     = 'Dumpsta'
-    , VERSION  = '0.0.6'
+    , VERSION  = '0.0.7'
     , HOMEPAGE = 'http://dumpsta.loop.coop/'
 
 
@@ -41,7 +41,7 @@ const Dumpsta = ROOT.Dumpsta = class {
         }
 
         //// ...and adding a full-scale Box (filled with spaces, by default).
-        this.add({ el:Dumpsta.Box, char:this.char })
+        this.add({ el:Dumpsta.El.Box, char:this.char })
     }
 
 
@@ -168,7 +168,7 @@ Dumpsta.HOMEPAGE = HOMEPAGE
 
 
 
-//\\//\\ src/main/Border.6.js
+//\\//\\ src/main/El.6.js
 
 
 
@@ -177,9 +177,38 @@ Dumpsta.HOMEPAGE = HOMEPAGE
 !function (ROOT) { 'use strict'
 
 
-ROOT.Dumpsta.Border = class {
+ROOT.Dumpsta.El = class {
 
     constructor (config, app) {
+    }
+
+    render (config) {
+    }
+
+    edit (config) {
+    }
+
+}
+
+
+}( 'object' == typeof global ? global : this ) // `window` in a browser
+
+
+
+
+//\\//\\ src/main/El.Border.6.js
+
+
+
+//// Dumpsta //// 0.0.* //// February 2017 //// http://dumpsta.loop.coop/ //////
+
+!function (ROOT) { 'use strict'
+
+
+ROOT.Dumpsta.El.Border = class extends ROOT.Dumpsta.El {
+
+    constructor (config, app) {
+        super(config, app)
 
         //// Record configuration.
         const defaults = {
@@ -250,7 +279,7 @@ ROOT.Dumpsta.Border = class {
 
 
 
-//\\//\\ src/main/Box.6.js
+//\\//\\ src/main/El.Box.6.js
 
 
 
@@ -259,9 +288,10 @@ ROOT.Dumpsta.Border = class {
 !function (ROOT) { 'use strict'
 
 
-ROOT.Dumpsta.Box = class {
+ROOT.Dumpsta.El.Box = class extends ROOT.Dumpsta.El {
 
     constructor (config, app) {
+        super(config, app)
 
         //// Record configuration.
         const defaults = {
@@ -322,7 +352,7 @@ ROOT.Dumpsta.Box = class {
 
 
 
-//\\//\\ src/main/Button.6.js
+//\\//\\ src/main/El.Button.6.js
 
 
 
@@ -331,9 +361,10 @@ ROOT.Dumpsta.Box = class {
 !function (ROOT) { 'use strict'
 
 
-ROOT.Dumpsta.Button = class {
+ROOT.Dumpsta.El.Button = class extends ROOT.Dumpsta.El {
 
     constructor (config, app) {
+        super(config, app)
 
         //// Record configuration.
         const defaults = {
@@ -361,11 +392,11 @@ ROOT.Dumpsta.Button = class {
         if (this.auto) this.width = this.text.length + 4
 
         //// A Button is composed of a Box of spaces, a Border...
-        this.box    = new ROOT.Dumpsta.Box(this, app)
-        this.border = new ROOT.Dumpsta.Border(this, app)
+        this.box    = new ROOT.Dumpsta.El.Box(this, app)
+        this.border = new ROOT.Dumpsta.El.Border(this, app)
 
         //// ...and a Label.
-        this.label = new ROOT.Dumpsta.Label({
+        this.label = new ROOT.Dumpsta.El.Label({
             top:    this.top   + Math.floor( (this.height-1) / 2 )
           , center: this.left  + Math.floor( (this.width) / 2 )
           , width:  this.width - 2
@@ -402,7 +433,7 @@ ROOT.Dumpsta.Button = class {
 
 
 
-//\\//\\ src/main/Label.6.js
+//\\//\\ src/main/El.Label.6.js
 
 
 
@@ -411,9 +442,10 @@ ROOT.Dumpsta.Button = class {
 !function (ROOT) { 'use strict'
 
 
-ROOT.Dumpsta.Label = class {
+ROOT.Dumpsta.El.Label = class extends ROOT.Dumpsta.El {
 
     constructor (config, app) {
+        super(config, app)
 
         //// Record configuration.
         const defaults = {
@@ -484,7 +516,7 @@ ROOT.Dumpsta.Label = class {
 
 
 
-//\\//\\ src/main/Table.6.js
+//\\//\\ src/main/El.Table.6.js
 
 
 
@@ -493,9 +525,10 @@ ROOT.Dumpsta.Label = class {
 !function (ROOT) { 'use strict'
 
 
-ROOT.Dumpsta.Table = class {
+ROOT.Dumpsta.El.Table = class extends ROOT.Dumpsta.El {
 
     constructor (config, app) {
+        super(config, app)
 
         //// Record configuration.
         const defaults = {
@@ -523,8 +556,8 @@ ROOT.Dumpsta.Table = class {
         if (null != this.height && ! config.auto) this.auto = false
 
         //// A Table is composed of a Box, a Border, and an array of Labels.
-        this.box    = new ROOT.Dumpsta.Box({ me:this.me }, app)
-        this.border = new ROOT.Dumpsta.Border({ me:this.me }, app)
+        this.box    = new ROOT.Dumpsta.El.Box({ me:this.me }, app)
+        this.border = new ROOT.Dumpsta.El.Border({ me:this.me }, app)
         this.labels = []
 
         //// Creating a new Table is just a special case of editing a Table.
@@ -572,7 +605,7 @@ ROOT.Dumpsta.Table = class {
         this.labels = []
         for (let r=0,row; row=rows[r]; r++)
             for (let c=0; c<cols; c++)
-                this.labels.push( new ROOT.Dumpsta.Label({
+                this.labels.push( new ROOT.Dumpsta.El.Label({
                     top:    this.top   + 1 + r
                   , left:   lefts[c]
                   , width:  maxs[c]
@@ -637,7 +670,7 @@ ROOT.Dumpsta.Table = class {
         this.labels = []
         for (let r=0,row; row=rows[r]; r++)
             for (let c=0; c<cols; c++)
-                this.labels.push( new ROOT.Dumpsta.Label({
+                this.labels.push( new ROOT.Dumpsta.El.Label({
                     top:    this.top   + 1 + r
                   , left:   lefts[c]
                   , width:  maxs[c]

@@ -18,8 +18,8 @@ jQuery( function($) {
 
 
 
-test('The Label class', () => {
-    is('function' == typeof Dumpsta.Label     , '`Dumpsta.Label` is a function')
+test('The El class', () => {
+    is('function' == typeof Dumpsta.El           , '`Dumpsta.El` is a function')
 })
 
 

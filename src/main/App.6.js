@@ -3,7 +3,7 @@
 !function (ROOT) { 'use strict'
 
 const NAME     = 'Dumpsta'
-    , VERSION  = '0.0.6'
+    , VERSION  = '0.0.8'
     , HOMEPAGE = 'http://dumpsta.loop.coop/'
 
 
@@ -37,7 +37,7 @@ const Dumpsta = ROOT.Dumpsta = class {
         }
 
         //// ...and adding a full-scale Box (filled with spaces, by default).
-        this.add({ el:Dumpsta.Box, char:this.char })
+        this.add({ el:Dumpsta.El.Box, char:this.char })
     }
 
 

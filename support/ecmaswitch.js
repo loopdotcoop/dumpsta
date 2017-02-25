@@ -22,7 +22,7 @@ var d = ROOT.document || {
 //// Dynamic section code is created by ‘init.js’ and rewitten by ‘auto.js’.
 
 var project = 'dumpsta'
-var classes = 'App,Border,Box,Button,Label,Table'
+var classes = 'App,El,El.Border,El.Box,El.Button,El.Label,El.Table'
 
 //// END DYNAMIC SECTION ///////////////////////////////////////////////////////
 
