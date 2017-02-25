@@ -18,11 +18,10 @@ var d = ROOT.document || {
 
 
 //// BEGIN DYNAMIC SECTION /////////////////////////////////////////////////////
-
-//// Dynamic section code is created by ‘init.js’ and rewitten by ‘auto.js’.
+//// This dynamic section is kept up to date by ‘ootility/make.js’ /////////////
 
 var project = 'dumpsta'
-var classes = 'App,El,El.Border,El.Box,El.Button,El.Label,El.Table'
+var classes = 'App,Another,El,El.Border,El.Box,El.Button,El.Label,El.Table,Base,Base.Sub'
 
 //// END DYNAMIC SECTION ///////////////////////////////////////////////////////
 

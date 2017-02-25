@@ -1,10 +1,11 @@
 !function () { 'use strict'
 
 const NAME     = 'Oopish Make'
-    , VERSION  = '0.0.6'
-    , HOMEPAGE = 'http://ootility.oopish.com/'
+    , VERSION  = '0.0.7'
+    , HOMEPAGE = 'http://ootility.oopish.com'
 
-    , BYLINE   = `\n\n\n\n//\\\\//\\\\ built by ${NAME} ${VERSION}\n`
+    , BYLINE   = `\n\n\n\n//\\\\//\\\\ built by ${NAME} ${VERSION}`
+                       + ` //\\\\//\\\\ ${HOMEPAGE} //\\\\//\\\\\n`
     , HELP =
 `
 ${NAME} ${VERSION}
@@ -27,8 +28,8 @@ $ cd /path/to/your/project/   # A project directory in standard Oopish format
 $ oomake --version            # Show the current ${NAME} version
 $ oomake                      # Build all distribution files in ‘dist/’
 
-Make Tasks
-----------
+Create Files
+------------
 1. Concatenate files in ‘src/main/’ to ‘dist/main/project.6.js’
 2. Transpile the new ‘project.6.js’ to ‘project.5.js’
 3. Minify ‘project.5.js’ to ‘project.5.min.js’
@@ -39,6 +40,14 @@ Make Tasks
    - ‘dist/test/project-nonbrowser-test.6.js’ (cannot be run in a browser)
    - ‘dist/test/project-universal-test.6.js’  (can run anywhere)
 7. Transpile the ‘browser’ and ‘universal’ files to ES5
+
+Edit Files
+----------
+1. support/demos.html                      Link to each usage example
+2. support/ecmaswitch.js                   \`var classes = '...'\` updated
+3. support/test.html                       ‘Development ES6’ links
+X. src/main/README.md                      Documentation for each class @TODO move to docs.js
+X. support/docs.html                       Documentation for each class @TODO move to docs.js
 
 Options
 -------
@@ -78,9 +87,12 @@ if ( projectLC.toLowerCase() != projectLC) return console.warn(
 if ( projectTC.toLowerCase() != projectLC) return console.warn(
     `Project '${projectLC}' is called '${projectTC}' in src/main/App.6.js`)
 
+//// Simplifies moving ‘App.6.js’ to the start of concatenation.
+Array.prototype.move = function(from, to) { // stackoverflow.com/a/7180095
+    this.splice(to, 0, this.splice(from, 1)[0]) }
 
 //// Declare variables.
-let opt, es6, es5, min, src, names
+let opt, es6, es5, min, src, pos, names
 
 //// Deal with command-line options.
 while ( opt = process.argv.shift() ) {
@@ -91,7 +103,7 @@ while ( opt = process.argv.shift() ) {
 
 
 
-//// MAIN
+//// CREATE FILES: MAIN
 
 
 //// Delete the current contents of ‘dist/main/’.
@@ -103,6 +115,9 @@ fs.readdirSync('dist/main').forEach( name => {
 //// 1. Concatenate files in ‘src/main/’ to ‘dist/main/project.6.js’
 src = fs.readdirSync('src/main')
 es6 = []
+if ( -1 === (pos = src.indexOf('App.6.js')) )
+    return console.warn('No ‘src/main/App.6.js’')
+src.move(pos, 0) // ‘src/main/App.6.js’ must go first (`move()` defined above)
 src.forEach( name => {
     if ( '.6.js' !== name.slice(-5) ) return
     es6.push('//\\\\//\\\\ src/main/' + name)
@@ -128,7 +143,7 @@ fs.writeFileSync( `dist/main/${projectLC}.5.min.js`, min.code + BYLINE )
 
 
 
-//// DEMO
+//// CREATE FILES: DEMO
 
 
 //// Delete the current contents of ‘dist/demo/’.
@@ -161,7 +176,7 @@ es6.forEach( (orig, i) => {
 
 
 
-//// TEST
+//// CREATE FILES: TEST
 
 
 //// Delete the current contents of ‘dist/test/’.
@@ -203,6 +218,22 @@ es5.browser    = traceur.compile(es6.browser,   { blockBinding:true }) + BYLINE
 fs.writeFileSync( `dist/test/${projectLC}-browser-test.5.js`,    es5.browser )
 es5.universal  = traceur.compile(es6.universal, { blockBinding:true }) + BYLINE
 fs.writeFileSync( `dist/test/${projectLC}-universal-test.5.js`,  es5.universal )
+
+
+
+
+//// EDIT FILES
+
+//// 1. support/demos.html                      Link to each usage example
+// @todo
+
+
+//// 2. support/ecmaswitch.js                   `var classes = '...'` updated
+// @todo
+
+
+//// 3. support/test.html                       ‘Development ES6’ links
+// @todo
 
 
 

@@ -2,7 +2,7 @@
 
 const NAME     = 'Oopish Alias'
     , VERSION  = '0.0.4'
-    , HOMEPAGE = 'http://ootility.oopish.com/'
+    , HOMEPAGE = 'http://ootility.oopish.com'
 
     , HELP =
 `
