@@ -62,26 +62,26 @@
         , s = // src values
               (1 == i) ? [ // Production Minified ES5
                 , '../lib/traceur-runtime.min.js'
-                , f + 'main/dumpsta.es5.min.js'
-                , f + 'demo/table-demo.es5.js' // no need to minify
+                , f + 'main/dumpsta.5.min.js'
+                , f + 'demo/table-demo.5.js' // no need to minify
               ]
             : (2 == i) ? [ // Production ES6
-                  f + 'main/dumpsta.es6.js'
-                , f + 'demo/table-demo.es6.js'
+                  f + 'main/dumpsta.6.js'
+                , f + 'demo/table-demo.6.js'
               ]
             : (3 == i) ? [ // Development ES6
-                  f + 'main/App.es6.js'
-                , f + 'main/Border.es6.js'
-                , f + 'main/Box.es6.js'
-                , f + 'main/Button.es6.js'
-                , f + 'main/Label.es6.js'
-                , f + 'main/Table.es6.js'
-                , f + 'demo/Table-demo.es6.js'
+                  f + 'main/App.6.js'
+                , f + 'main/Border.6.js'
+                , f + 'main/Box.6.js'
+                , f + 'main/Button.6.js'
+                , f + 'main/Label.6.js'
+                , f + 'main/Table.6.js'
+                , f + 'demo/Table-demo.6.js'
               ]
             : [ // Production ES5 (the default, if no cookie has been set)
                 , '../lib/traceur-runtime.js'
-                , f + 'main/dumpsta.es5.js'
-                , f + 'demo/table-demo.es5.js'
+                , f + 'main/dumpsta.5.js'
+                , f + 'demo/table-demo.5.js'
               ]
         , B = '<script src="'  // begin
         , E = '"></'+'script>' // end

@@ -1,4 +1,4 @@
-//\\//\\ src/main/App.es6.js
+//\\//\\ src/main/App.6.js
 
 
 
@@ -168,7 +168,7 @@ Dumpsta.HOMEPAGE = HOMEPAGE
 
 
 
-//\\//\\ src/main/Border.es6.js
+//\\//\\ src/main/Border.6.js
 
 
 
@@ -250,7 +250,7 @@ ROOT.Dumpsta.Border = class {
 
 
 
-//\\//\\ src/main/Box.es6.js
+//\\//\\ src/main/Box.6.js
 
 
 
@@ -322,7 +322,7 @@ ROOT.Dumpsta.Box = class {
 
 
 
-//\\//\\ src/main/Button.es6.js
+//\\//\\ src/main/Button.6.js
 
 
 
@@ -402,7 +402,7 @@ ROOT.Dumpsta.Button = class {
 
 
 
-//\\//\\ src/main/Label.es6.js
+//\\//\\ src/main/Label.6.js
 
 
 
@@ -484,7 +484,7 @@ ROOT.Dumpsta.Label = class {
 
 
 
-//\\//\\ src/main/Table.es6.js
+//\\//\\ src/main/Table.6.js
 
 
 
@@ -653,4 +653,4 @@ ROOT.Dumpsta.Table = class {
 
 
 
-//\\//\\ built by Oopish Make 0.0.5
+//\\//\\ built by Oopish Make 0.0.6

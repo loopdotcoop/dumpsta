@@ -1,4 +1,4 @@
-//\\//\\ src/demo/Box-demo.es6.js
+//\\//\\ src/demo/Box-demo.6.js
 
 
 
@@ -187,4 +187,4 @@ $('#dump').html( dumpsta.dump({ trails:true }) )
 
 
 
-//\\//\\ built by Oopish Make 0.0.5
+//\\//\\ built by Oopish Make 0.0.6

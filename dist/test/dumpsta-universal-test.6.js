@@ -1,4 +1,4 @@
-//\\//\\ src/test/App-universal-test.es6.js
+//\\//\\ src/test/App-universal-test.6.js
 
 
 
@@ -39,7 +39,7 @@ test('The Dumpsta class', () => {
 
 
 
-//\\//\\ src/test/Border-universal-test.es6.js
+//\\//\\ src/test/Border-universal-test.6.js
 
 
 
@@ -75,7 +75,7 @@ test('The Border class', () => {
 
 
 
-//\\//\\ src/test/Box-universal-test.es6.js
+//\\//\\ src/test/Box-universal-test.6.js
 
 
 
@@ -111,7 +111,7 @@ test('The Box class', () => {
 
 
 
-//\\//\\ src/test/Button-universal-test.es6.js
+//\\//\\ src/test/Button-universal-test.6.js
 
 
 
@@ -147,7 +147,7 @@ test('The Button class', () => {
 
 
 
-//\\//\\ src/test/Label-universal-test.es6.js
+//\\//\\ src/test/Label-universal-test.6.js
 
 
 
@@ -183,7 +183,7 @@ test('The Label class', () => {
 
 
 
-//\\//\\ src/test/Table-universal-test.es6.js
+//\\//\\ src/test/Table-universal-test.6.js
 
 
 
@@ -220,4 +220,4 @@ test('The Table class', () => {
 
 
 
-//\\//\\ built by Oopish Make 0.0.5
+//\\//\\ built by Oopish Make 0.0.6

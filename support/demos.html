@@ -78,17 +78,17 @@
         , s = // src values
               (1 == i) ? [ // Production Minified ES5
                 , '../lib/traceur-runtime.min.js'
-                , f + 'main/dumpsta.es5.min.js'
+                , f + 'main/dumpsta.5.min.js'
               ]
             : (2 == i) ? [ // Production ES6
-                  f + 'main/dumpsta.es6.js'
+                  f + 'main/dumpsta.6.js'
               ]
             : (3 == i) ? [ // Development ES6
-                  f + 'main/App.es6.js' // only need this for the `VERSION`
+                  f + 'main/App.6.js' // only need this for the `VERSION`
               ]
             : [ // Production ES5 (the default, if no cookie has been set)
                 , '../lib/traceur-runtime.js'
-                , f + 'main/dumpsta.es5.js'
+                , f + 'main/dumpsta.5.js'
               ]
         , B = '<script src="'  // begin
         , E = '"></'+'script>' // end
