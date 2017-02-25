@@ -1,11 +1,11 @@
-//// ECMASwitch //// 0.0.1 //// February 2017 //// ecmaswitch.oopish.com/ //////
+//// ECMASwitch //// 0.0.2 //// February 2017 //// ecmaswitch.oopish.com/ //////
 
 !function (ROOT) { 'use strict'
 
 //// Create the namespace-object if it does not already exist, and add contants.
 var ECMASwitch = ROOT.ECMASwitch = ROOT.ECMASwitch || {}
 ECMASwitch.NAME     = 'ECMASwitch'
-ECMASwitch.VERSION  = '0.0.1'
+ECMASwitch.VERSION  = '0.0.2'
 ECMASwitch.HOMEPAGE = 'http://ecmaswitch.oopish.com/'
 
 //// Polyfill `document` for non-browser contexts.
@@ -20,8 +20,8 @@ var d = ROOT.document || {
 //// BEGIN DYNAMIC SECTION /////////////////////////////////////////////////////
 //// This dynamic section is kept up to date by ‘ootility/make.js’ /////////////
 
-var project = 'dumpsta'
-var classes = 'App,Another,El,El.Border,El.Box,El.Button,El.Label,El.Table,Base,Base.Sub'
+var projectLC = 'dumpsta'
+var classes = 'App,El,El.Border,El.Box,El.Button,El.Label,El.Table'
 
 //// END DYNAMIC SECTION ///////////////////////////////////////////////////////
 
@@ -38,17 +38,17 @@ ECMASwitch.load = function (path, names) {
       , s = // src values
           (1 == f) ? [ // ES5 Minified
             , path + 'lib/traceur-runtime.min.js'
-            , p + 'main/' + project + '.5.min.js'
+            , p + 'main/' + projectLC + '.5.min.js'
           ]
         : (2 == f) ? [ // ES6 Production
-              p + 'main/' + project + '.6.js'
+              p + 'main/' + projectLC + '.6.js'
           ]
         : (3 == f) ?   // ES6 Development
               (p+'main/'+classes.replace(/,/g,'.6.js|'+p+'main/')+'.6.js')
              .split('|')
         : [            // ES5 Production (the default, if no cookie’s been set)
             , path + 'lib/traceur-runtime.js'
-            , p + 'main/' + project + '.5.js'
+            , p + 'main/' + projectLC + '.5.js'
           ]
       , B = '<script src="'  // begin
       , E = '"></'+'script>' // end

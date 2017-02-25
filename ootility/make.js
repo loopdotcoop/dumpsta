@@ -1,7 +1,7 @@
 !function () { 'use strict'
 
 const NAME     = 'Oopish Make'
-    , VERSION  = '0.0.7'
+    , VERSION  = '0.0.8'
     , HOMEPAGE = 'http://ootility.oopish.com'
 
     , BYLINE   = `\n\n\n\n//\\\\//\\\\ built by ${NAME} ${VERSION}`
@@ -85,14 +85,14 @@ const projectLC = process.cwd().split('/').pop() // lowercase, eg 'foobar'
 if ( projectLC.toLowerCase() != projectLC) return console.warn(
     `Project '${projectLC}' contains uppercase letters`)
 if ( projectTC.toLowerCase() != projectLC) return console.warn(
-    `Project '${projectLC}' is called '${projectTC}' in src/main/App.6.js`)
+    `Project '${projectLC}' is called '${projectTC}' in ‘src/main/App.6.js’`)
 
 //// Simplifies moving ‘App.6.js’ to the start of concatenation.
 Array.prototype.move = function(from, to) { // stackoverflow.com/a/7180095
     this.splice(to, 0, this.splice(from, 1)[0]) }
 
 //// Declare variables.
-let opt, es6, es5, min, src, pos, names
+let opt, es6, es5, min, mains, demos, tests, pos, names
 
 //// Deal with command-line options.
 while ( opt = process.argv.shift() ) {
@@ -113,12 +113,12 @@ fs.readdirSync('dist/main').forEach( name => {
 
 
 //// 1. Concatenate files in ‘src/main/’ to ‘dist/main/project.6.js’
-src = fs.readdirSync('src/main')
+mains = fs.readdirSync('src/main')
 es6 = []
-if ( -1 === (pos = src.indexOf('App.6.js')) )
+if ( -1 === (pos = mains.indexOf('App.6.js')) )
     return console.warn('No ‘src/main/App.6.js’')
-src.move(pos, 0) // ‘src/main/App.6.js’ must go first (`move()` defined above)
-src.forEach( name => {
+mains.move(pos, 0) // ‘src/main/App.6.js’ must go first (`move()` defined above)
+mains.forEach( name => {
     if ( '.6.js' !== name.slice(-5) ) return
     es6.push('//\\\\//\\\\ src/main/' + name)
     es6.push( fs.readFileSync('src/main/' + name)+'' )
@@ -153,9 +153,9 @@ fs.readdirSync('dist/demo').forEach( name => {
 
 
 //// 4. Copy files in ‘src/demo/’ to ‘dist/demo/’ (and change to lowercase)
-src = fs.readdirSync('src/demo')
+demos = fs.readdirSync('src/demo')
 es6 = [], names = []
-src.forEach( name => {
+demos.forEach( name => {
     if ( '.6.js' !== name.slice(-5) ) return
     es6.push('//\\\\//\\\\ src/demo/' + name + '\n\n\n\n'
         + fs.readFileSync('src/demo/' + name)
@@ -186,14 +186,14 @@ fs.readdirSync('dist/test').forEach( name => {
 
 
 //// 6. Concatenate files in ‘src/test/’ to:
-src = fs.readdirSync('src/test')
+tests = fs.readdirSync('src/test')
 es6 = { browser:[], nonbrowser:[], universal:[] }
-src.forEach( name => {
+tests.forEach( name => {
     if ( '.6.js' !== name.slice(-5) ) return
     let ua =
-        0 < name.indexOf('browser')    ? es6.browser
-      : 0 < name.indexOf('nonbrowser') ? es6.nonbrowser
-      : 0 < name.indexOf('universal')  ? es6.universal
+        '-browser-test.6.js'    == name.slice(-18) ? es6.browser
+      : '-nonbrowser-test.6.js' == name.slice(-21) ? es6.nonbrowser
+      : '-universal-test.6.js'  == name.slice(-20) ? es6.universal
       : []
     ua.push('//\\\\//\\\\ src/test/' + name)
     ua.push( fs.readFileSync('src/test/' + name)+'' )
@@ -225,20 +225,92 @@ fs.writeFileSync( `dist/test/${projectLC}-universal-test.5.js`,  es5.universal )
 //// EDIT FILES
 
 //// 1. support/demos.html                      Link to each usage example
-// @todo
+updateDemoFile('support/demos.html', 'support')
 
 
 //// 2. support/ecmaswitch.js                   `var classes = '...'` updated
-// @todo
+updateECMASwitch('support/ecmaswitch.js', mains) // `mains` from previous step
 
 
 //// 3. support/test.html                       ‘Development ES6’ links
-// @todo
+updateTestFile('support/test.html', tests) // `tests` from previous step
 
 
 
 
 //// UTILITY
+
+
+////
+function updateDemoFile (htmlPath, supportPath) {
+    let out, start = 0, end = 0
+      , html = (fs.readFileSync(htmlPath)+'').split('\n')
+      , demos = fs.readdirSync(supportPath)
+    for (; start<html.length; start++)
+        if (0 < html[start].indexOf('BEGIN DYNAMIC SECTION //////////') ) break
+    for (; end<html.length; end++)
+        if (0 < html[end].indexOf('END DYNAMIC SECTION ////////////')   ) break
+    if ( start == html.length || end == html.length)
+        return console.warn(`Could not find dynamic section in ‘${htmlPath}’`)
+    out = html.slice(0, start+1).concat([
+`  //// This dynamic section is kept up to date by ‘ootility/make.js’ /////// -->`])
+    demos.forEach( name => {
+        if ( 'demo-' != name.slice(0,5) || '.html' != name.slice(-5) ) return
+        let i, file = (fs.readFileSync(supportPath+'/'+name)+'').split('\n')
+        for (i=0; i<file.length; i++)
+            if (0 < file[i].indexOf('<title>') ) break
+        out.push(`
+  <a href="${name}">
+  ${i != file.length ? file[i].replace(/title>/g,'b>') : '  Untitled Demo'}
+  </a><br>`)
+    })
+    out = out.concat( '', html.slice(end) )
+    fs.writeFileSync( htmlPath, out.join('\n') )
+}
+
+
+////
+function updateECMASwitch (jsPath, mains) {
+    let out, start = 0, end = 0
+      , js = (fs.readFileSync(jsPath)+'').split('\n')
+    for (; start<js.length; start++)
+        if (0 < js[start].indexOf('BEGIN DYNAMIC SECTION //////////') ) break
+    for (; end<js.length; end++)
+        if (0 < js[end].indexOf('END DYNAMIC SECTION ////////////')   ) break
+    if ( start == js.length || end == js.length)
+        return console.warn(`Could not find dynamic section in ‘${jsPath}’`)
+    out = js.slice(0, start+1).concat([
+`//// This dynamic section is kept up to date by ‘ootility/make.js’ /////////////
+
+var projectLC = '${projectLC}'
+var classes = '${mains.filter(n=>'.6.js'==n.slice(-5)).map(n=>n.slice(0,-5))}'
+`])
+    out = out.concat( js.slice(end) )
+    fs.writeFileSync( jsPath, out.join('\n') )
+}
+
+
+////
+function updateTestFile (htmlPath, tests) {
+    let out, start = 0, end = 0
+      , html = (fs.readFileSync(htmlPath)+'').split('\n')
+    for (; start<html.length; start++)
+        if (0 < html[start].indexOf('BEGIN DYNAMIC SECTION //////////') ) break
+    for (; end<html.length; end++)
+        if (0 < html[end].indexOf('END DYNAMIC SECTION ////////////')   ) break
+    if ( start == html.length || end == html.length)
+        return console.warn(`Could not find dynamic section in ‘${htmlPath}’`)
+    out = html.slice(0, start+1).concat([
+`//// This dynamic section is kept up to date by ‘ootility/make.js’ /////////////
+`])
+    tests.forEach( name => {
+        if ( '-browser-test.6.js'   != name.slice(-18)
+          && '-universal-test.6.js' != name.slice(-20) ) return
+        out.push(`    , [ null, null, null, '../src/test/${name}' ]`)
+    })
+    out = out.concat( '', html.slice(end) )
+    fs.writeFileSync( htmlPath, out.join('\n') )
+}
 
 
 //// Hack Uglify, to avoid warnings we don’t care about.

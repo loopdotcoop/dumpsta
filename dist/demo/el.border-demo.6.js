@@ -188,4 +188,4 @@ $('#dump').html( dumpsta.dump({ trails:true }) )
 
 
 
-//\\//\\ built by Oopish Make 0.0.7 //\\//\\ http://ootility.oopish.com //\\//\\
+//\\//\\ built by Oopish Make 0.0.8 //\\//\\ http://ootility.oopish.com //\\//\\
