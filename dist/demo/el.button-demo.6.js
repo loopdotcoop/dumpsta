@@ -14,7 +14,7 @@ let dumpsta = new window.Dumpsta({
 
 //// Create an auto-width Button with the text 'Button Zero'.
 let button0 = dumpsta.add({
-    el:     window.Dumpsta.El.Button
+    class:  window.Dumpsta.El.Button
   , top:    10
   , left:   36
   , text:   'Button Zero'
@@ -22,7 +22,7 @@ let button0 = dumpsta.add({
 
 //// Create a Button with extra width, containing the text 'Button One'.
 let button1 = dumpsta.add({
-    el:     window.Dumpsta.El.Button
+    class:  window.Dumpsta.El.Button
   , top:    7
   , left:   10
   , width:  20
@@ -31,7 +31,7 @@ let button1 = dumpsta.add({
 
 //// Create a 1x1 Button in the top left corner.
 let button2 = dumpsta.add({
-    el:     window.Dumpsta.El.Button
+    class:  window.Dumpsta.El.Button
   , top:    0
   , left:   0
   , width:  1
@@ -40,7 +40,7 @@ let button2 = dumpsta.add({
 
 //// Create a 1x1 Button near the bottom right corner.
 let button3 = dumpsta.add({
-    el:     window.Dumpsta.El.Button
+    class:  window.Dumpsta.El.Button
   , top:    22
   , left:   77
   , width:  1
@@ -49,7 +49,7 @@ let button3 = dumpsta.add({
 
 //// Create 'Button Four' which extends beyond the right-edge.
 let button4 = dumpsta.add({
-    el:     window.Dumpsta.El.Button
+    class:  window.Dumpsta.El.Button
   , top:    7
   , left:   66
   , width:  20
@@ -59,7 +59,7 @@ let button4 = dumpsta.add({
 
 //// Create 'Button Five' which extends beyond the left-edge.
 let button5 = dumpsta.add({
-    el:     window.Dumpsta.El.Button
+    class:  window.Dumpsta.El.Button
   , top:    1
   , left:   -7
   , width:  20
@@ -69,7 +69,7 @@ let button5 = dumpsta.add({
 
 //// Create 'Button Six' which extends beyond the bottom-edge.
 let button6 = dumpsta.add({
-    el:     window.Dumpsta.El.Button
+    class:  window.Dumpsta.El.Button
   , top:    20
   , left:   14
   , width:  40
@@ -79,7 +79,7 @@ let button6 = dumpsta.add({
 
 //// Create 'Button Seven' which extends beyond the top-edge.
 let button7 = dumpsta.add({
-    el:     window.Dumpsta.El.Button
+    class:  window.Dumpsta.El.Button
   , top:    -2
   , left:   14
   , width:  40
@@ -89,7 +89,7 @@ let button7 = dumpsta.add({
 
 //// Create 'Button Eight', which is 3x3.
 let button8 = dumpsta.add({
-    el:     window.Dumpsta.El.Button
+    class:  window.Dumpsta.El.Button
   , top:    12
   , left:   4
   , width:  3
@@ -99,7 +99,7 @@ let button8 = dumpsta.add({
 
 //// Create 'Button Nine', which is 2x3.
 let button9 = dumpsta.add({
-    el:     window.Dumpsta.El.Button
+    class:  window.Dumpsta.El.Button
   , top:    12
   , left:   12
   , width:  2
@@ -109,7 +109,7 @@ let button9 = dumpsta.add({
 
 //// Create 'Button Ten', which is 1x3.
 let button10 = dumpsta.add({
-    el:     window.Dumpsta.El.Button
+    class:  window.Dumpsta.El.Button
   , top:    12
   , left:   17
   , width:  1
@@ -119,7 +119,7 @@ let button10 = dumpsta.add({
 
 //// Create 'Button Eleven', which is 0x3.
 let button11 = dumpsta.add({
-    el:     window.Dumpsta.El.Button
+    class:  window.Dumpsta.El.Button
   , top:    12
   , left:   21
   , width:  0
@@ -129,7 +129,7 @@ let button11 = dumpsta.add({
 
 //// Create 'Button Twelve', which is 4x2.
 let button12 = dumpsta.add({
-    el:     window.Dumpsta.El.Button
+    class:  window.Dumpsta.El.Button
   , top:    16
   , left:   4
   , width:  4
@@ -139,7 +139,7 @@ let button12 = dumpsta.add({
 
 //// Create 'Button Thirteen', which is 3x1.
 let button13 = dumpsta.add({
-    el:     window.Dumpsta.El.Button
+    class:  window.Dumpsta.El.Button
   , top:    19
   , left:   4
   , width:  3
@@ -149,7 +149,7 @@ let button13 = dumpsta.add({
 
 //// Create 'Button Fourteen', which is 3x0.
 let button14 = dumpsta.add({
-    el:     window.Dumpsta.El.Button
+    class:  window.Dumpsta.El.Button
   , top:    22
   , left:   4
   , width:  3
@@ -159,7 +159,7 @@ let button14 = dumpsta.add({
 
 //// Create 'Button Fifteen', which is truncates the text.
 let button15 = dumpsta.add({
-    el:     window.Dumpsta.El.Button
+    class:  window.Dumpsta.El.Button
   , top:    16
   , left:   65
   , width:  8

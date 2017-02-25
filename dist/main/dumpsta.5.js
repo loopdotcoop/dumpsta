@@ -2,7 +2,7 @@
 !function(ROOT) {
   'use strict';
   var NAME = 'Dumpsta',
-      VERSION = '0.0.7',
+      VERSION = '0.0.9',
       HOMEPAGE = 'http://dumpsta.loop.coop/';
   var Dumpsta = ROOT.Dumpsta = ($traceurRuntime.createClass)(function() {
     var config = arguments[0] !== (void 0) ? arguments[0] : {};
@@ -25,7 +25,7 @@
         this.grid[y][x] = {c: ' '};
     }
     this.add({
-      el: Dumpsta.El.Box,
+      class: Dumpsta.El.Box,
       char: this.char
     });
   }, {
@@ -61,7 +61,7 @@
       var config = arguments[0] !== (void 0) ? arguments[0] : {};
       var id = config.id = this.id++;
       var z = config.z = this.els.length;
-      this.ids[id] = this.els[z] = new config.el(config, this);
+      this.ids[id] = this.els[z] = new config.class(config, this);
       return id;
     },
     edit: function() {
@@ -102,17 +102,17 @@
         });
         var x = Math.floor(this.width * config.x),
             y = Math.floor(this.height * config.y),
-            me = this.grid[y][x].me;
-        if (!me)
+            el = this.grid[y][x].el;
+        if (!el)
           return;
-        me.mode = 'focus' == me.mode ? 'focus' : config.mode;
-        if (me.click) {
+        el.mode = 'focus' == el.mode ? 'focus' : config.mode;
+        if (el.click) {
           if (config.click) {
-            me.click();
+            el.click();
             if (ids[this.focus])
               ids[this.focus].mode = 'char';
-            this.focus = me.id;
-            me.mode = 'focus';
+            this.focus = el.id;
+            el.mode = 'focus';
           }
           return 'pointer';
         } else {
@@ -145,7 +145,7 @@
         title: '',
         mode: 'char',
         click: null,
-        me: this
+        el: this
       };
       Object.assign(this, defaults, config, {app: app});
     }
@@ -157,50 +157,50 @@
             width = $__3.width,
             height = $__3.height,
             title = $__3.title,
-            me = $__3.me;
+            el = $__3.el;
         if (1 > width || 1 > height)
           return;
         var grid = this.app.grid,
             right = left + width - 1,
             bottom = top + height - 1,
-            active = 'char' != me.mode && me.click;
+            active = 'char' != el.mode && el.click;
         if (grid[top]) {
           grid[top][left] = {
             c: ".",
-            me: me
+            el: el
           };
           for (var x = left + 1; x < right; x++)
             grid[top][x] = {
               c: active ? "=" : "—",
-              me: me
+              el: el
             };
           grid[top][right] = {
             c: ".",
-            me: me
+            el: el
           };
         }
         for (var y = top + 1; y < bottom; y++)
           if (grid[y])
             grid[y][left] = {
               c: active ? '|' : "¦",
-              me: me
+              el: el
             }, grid[y][right] = {
               c: active ? '|' : "¦",
-              me: me
+              el: el
             };
         if (grid[bottom]) {
           grid[bottom][left] = {
             c: active ? '"' : "'",
-            me: me
+            el: el
           };
           for (var x$__10 = left + 1; x$__10 < right; x$__10++)
             grid[bottom][x$__10] = {
               c: active ? "≠" : "=",
-              me: me
+              el: el
             };
           grid[bottom][right] = {
             c: active ? '"' : "'",
-            me: me
+            el: el
           };
         }
         if (grid[top]) {
@@ -209,7 +209,7 @@
           for (var i = 0; i < len; i++, x$__11++)
             grid[top][x$__11] = {
               c: title[i],
-              me: me
+              el: el
             };
         }
       },
@@ -237,7 +237,7 @@
         inert: null,
         mode: 'char',
         click: null,
-        me: this
+        el: this
       };
       Object.assign(this, defaults, config, {app: app});
       this.char += '';
@@ -254,9 +254,9 @@
             width = $__3.width,
             height = $__3.height,
             mode = $__3.mode,
-            me = $__3.me;
+            el = $__3.el;
         var grid = this.app.grid;
-        var c = this[me.mode] || this.char;
+        var c = this[el.mode] || this.char;
         var length = c.length;
         if (1 > width || 1 > height)
           return;
@@ -267,7 +267,7 @@
               if (grid[y][x])
                 grid[y][x] = {
                   c: c[i % length],
-                  me: me
+                  el: el
                 };
       },
       edit: function(config) {
@@ -299,7 +299,7 @@
         inert: null,
         mode: 'char',
         click: null,
-        me: this
+        el: this
       };
       Object.assign(this, defaults, config, {app: app});
       if (null != this.width && !config.auto)
@@ -313,7 +313,7 @@
         center: this.left + Math.floor((this.width) / 2),
         width: this.width - 2,
         text: this.text,
-        me: this.me
+        el: this.el
       }, app);
     }
     return ($traceurRuntime.createClass)($__0, {
@@ -356,7 +356,7 @@
         text: '',
         mode: 'char',
         click: null,
-        me: this
+        el: this
       };
       Object.assign(this, defaults, config, {app: app});
       if (null != this.width && !config.auto)
@@ -374,7 +374,7 @@
             width = $__3.width,
             auto = $__3.auto,
             text = $__3.text,
-            me = $__3.me;
+            el = $__3.el;
         var grid = this.app.grid;
         var length = text.length;
         var w = auto ? length : width;
@@ -389,7 +389,7 @@
               if (c = text[pos])
                 grid[top][x] = {
                   c: c,
-                  me: me
+                  el: el
                 };
       },
       edit: function(config) {
@@ -422,15 +422,15 @@
         inert: null,
         mode: 'char',
         click: null,
-        me: this
+        el: this
       };
       Object.assign(this, defaults, config, {app: app});
       if (null != this.width && !config.auto)
         this.auto = false;
       if (null != this.height && !config.auto)
         this.auto = false;
-      this.box = new ROOT.Dumpsta.El.Box({me: this.me}, app);
-      this.border = new ROOT.Dumpsta.El.Border({me: this.me}, app);
+      this.box = new ROOT.Dumpsta.El.Box({el: this.el}, app);
+      this.border = new ROOT.Dumpsta.El.Border({el: this.el}, app);
       this.labels = [];
       this.edit(config);
     }

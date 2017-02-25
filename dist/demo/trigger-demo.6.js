@@ -57,7 +57,7 @@ $(window).on('keydown'
 
 //// Create 'Border Zero'.
 let border0 = dumpsta.add({
-    el:     window.Dumpsta.El.Border
+    class:  window.Dumpsta.El.Border
   , top:    4
   , left:   3
   , width:  16
@@ -67,7 +67,7 @@ let border0 = dumpsta.add({
 
 //// Create 'Box Zero'.
 let box0 = dumpsta.add({
-    el:     window.Dumpsta.El.Box
+    class:  window.Dumpsta.El.Box
   , top:    4
   , left:   21
   , width:  16
@@ -82,7 +82,7 @@ let box0 = dumpsta.add({
 
 //// Create 'Button Zero'.
 let button0 = dumpsta.add({
-    el:     window.Dumpsta.El.Button
+    class:  window.Dumpsta.El.Button
   , top:    4
   , left:   40
   , text:   'Button Zero'
@@ -91,7 +91,7 @@ let button0 = dumpsta.add({
 
 //// Create 'Button One' (has no click-function).
 let button1 = dumpsta.add({
-    el:     window.Dumpsta.El.Button
+    class:  window.Dumpsta.El.Button
   , top:    8
   , left:   40
   , text:   'Button One'
@@ -100,7 +100,7 @@ let button1 = dumpsta.add({
 
 //// Create 'Button Two'.
 let button2 = dumpsta.add({
-    el:     window.Dumpsta.El.Button
+    class:  window.Dumpsta.El.Button
   , top:    12
   , left:   40
   , text:   'Button Two'
@@ -109,7 +109,7 @@ let button2 = dumpsta.add({
 
 //// Create 'Label Zero'.
 let label0 = dumpsta.add({
-    el:     window.Dumpsta.El.Label
+    class:  window.Dumpsta.El.Label
   , top:    10
   , left:   3
   , width:  16
@@ -118,7 +118,7 @@ let label0 = dumpsta.add({
 
 //// Create 'Table Zero'.
 let table0 = dumpsta.add({
-    el:     window.Dumpsta.El.Table
+    class:  window.Dumpsta.El.Table
   , top:    4
   , left:   60
   , width:  16

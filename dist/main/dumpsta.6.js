@@ -7,7 +7,7 @@
 !function (ROOT) { 'use strict'
 
 const NAME     = 'Dumpsta'
-    , VERSION  = '0.0.7'
+    , VERSION  = '0.0.9'
     , HOMEPAGE = 'http://dumpsta.loop.coop/'
 
 
@@ -41,7 +41,7 @@ const Dumpsta = ROOT.Dumpsta = class {
         }
 
         //// ...and adding a full-scale Box (filled with spaces, by default).
-        this.add({ el:Dumpsta.El.Box, char:this.char })
+        this.add({ class:Dumpsta.El.Box, char:this.char })
     }
 
 
@@ -81,7 +81,7 @@ const Dumpsta = ROOT.Dumpsta = class {
     add (config={}) {
         const id = config.id = this.id++ // record the new ID in `config`
         const z  = config.z  = this.els.length // record the z-index in `config`
-        this.ids[id] = this.els[z] = new config.el(config, this)
+        this.ids[id] = this.els[z] = new config.class(config, this)
         return id
     }
 
@@ -126,15 +126,15 @@ const Dumpsta = ROOT.Dumpsta = class {
             this.els.forEach( el => el.mode = 'focus' == el.mode ? 'focus' : 'char' ) // reset all modes
             const x  = Math.floor(this.width  * config.x)
                 , y  = Math.floor(this.height * config.y)
-                , me = this.grid[y][x].me
-            if (! me) return // not interactive
-            me.mode = 'focus' == me.mode ? 'focus' : config.mode
-            if (me.click) {
+                , el = this.grid[y][x].el
+            if (! el) return // not interactive
+            el.mode = 'focus' == el.mode ? 'focus' : config.mode
+            if (el.click) {
                 if (config.click) {
-                    me.click() // note that clicking switches focus
+                    el.click() // note that clicking switches focus
                     if (ids[this.focus]) ids[this.focus].mode = 'char'
-                    this.focus = me.id
-                    me.mode = 'focus'
+                    this.focus = el.id
+                    el.mode = 'focus'
                 }
                 return 'pointer'
             } else {
@@ -219,13 +219,13 @@ ROOT.Dumpsta.El.Border = class extends ROOT.Dumpsta.El {
           , title:  ''
           , mode:   'char'
           , click:  null
-          , me:     this
+          , el:     this
         }
         Object.assign(this, defaults, config, { app })
     }
 
     render (config) { //@todo don’t draw outside the left or right bounds
-        const { top, left, width, height, title, me } = this
+        const { top, left, width, height, title, el } = this
 
         if (1 > width || 1 > height) return // invisible
 
@@ -233,28 +233,28 @@ ROOT.Dumpsta.El.Border = class extends ROOT.Dumpsta.El {
         const grid   = this.app.grid
             , right  = left + width  - 1
             , bottom = top  + height - 1
-            , active = 'char' != me.mode && me.click
+            , active = 'char' != el.mode && el.click
 
         //// Draw the top border.
         if (grid[top]) {
-            grid[top][left]  = { c:".", me }
+            grid[top][left]  = { c:".", el }
             for (let x=left+1; x<right; x++)
-                grid[top][x] = { c:active?"=":"—", me }
-            grid[top][right] = { c:".", me }
+                grid[top][x] = { c:active?"=":"—", el }
+            grid[top][right] = { c:".", el }
         }
 
         //// Draw the left and right borders.
         for (let y=top+1; y<bottom; y++)
             if (grid[y])
-                grid[y][left]  = { c:active?'|':"¦", me }
-              , grid[y][right] = { c:active?'|':"¦", me }
+                grid[y][left]  = { c:active?'|':"¦", el }
+              , grid[y][right] = { c:active?'|':"¦", el }
 
         //// Draw the bottom border.
         if (grid[bottom]) { // don’t fall off the bottom of the grid
-            grid[bottom][left]  = { c:active?'"':"'", me }
+            grid[bottom][left]  = { c:active?'"':"'", el }
             for (let x=left+1; x<right; x++)
-                grid[bottom][x] = { c:active?"≠":"=", me }
-            grid[bottom][right] = { c:active?'"':"'", me }
+                grid[bottom][x] = { c:active?"≠":"=", el }
+            grid[bottom][right] = { c:active?'"':"'", el }
         }
 
         //// Draw the title.
@@ -262,7 +262,7 @@ ROOT.Dumpsta.El.Border = class extends ROOT.Dumpsta.El {
             const len = Math.min(title.length, width-2)
             let x = Math.ceil(left + width / 2) - Math.ceil(len / 2)
             for (let i=0; i<len; i++, x++)
-                grid[top][x] = { c:title[i], me }
+                grid[top][x] = { c:title[i], el }
         }
 
     }
@@ -306,7 +306,7 @@ ROOT.Dumpsta.El.Box = class extends ROOT.Dumpsta.El {
           , inert:    null
           , mode:     'char'
           , click:    null
-          , me:       this
+          , el:       this
         }
         Object.assign(this, defaults, config, { app })
 
@@ -319,9 +319,9 @@ ROOT.Dumpsta.El.Box = class extends ROOT.Dumpsta.El {
     }
 
     render (config) {
-        const { top, left, width, height, mode, me } = this
+        const { top, left, width, height, mode, el } = this
         const grid   = this.app.grid
-        const c      = this[ me.mode ] || this.char //@todo debug, so `|| this.char is not needed`
+        const c      = this[ el.mode ] || this.char //@todo debug, so `|| this.char is not needed`
         const length = c.length // `c[i % length]` allows multi-char fills
 
         if (1 > width || 1 > height) return // invisible
@@ -333,7 +333,7 @@ ROOT.Dumpsta.El.Box = class extends ROOT.Dumpsta.El {
                     if (grid[y][x]) // skip the grid-position if missing
                         grid[y][x] = {
                             c: c[i % length] // draw `char` or `hover`
-                          , me               // backref for mouse-events
+                          , el               // backref for mouse-events
                         }
     }
 
@@ -381,7 +381,7 @@ ROOT.Dumpsta.El.Button = class extends ROOT.Dumpsta.El {
           , inert:    null
           , mode:     'char'
           , click:    null
-          , me:       this
+          , el:       this
         }
         Object.assign(this, defaults, config, { app })
 
@@ -401,7 +401,7 @@ ROOT.Dumpsta.El.Button = class extends ROOT.Dumpsta.El {
           , center: this.left  + Math.floor( (this.width) / 2 )
           , width:  this.width - 2
           , text:   this.text
-          , me:     this.me
+          , el:     this.el
         }, app)
     }
 
@@ -458,7 +458,7 @@ ROOT.Dumpsta.El.Label = class extends ROOT.Dumpsta.El {
           , text:   ''
           , mode:   'char'
           , click:  null
-          , me:     this
+          , el:     this
         }
         Object.assign(this, defaults, config, { app })
 
@@ -470,7 +470,7 @@ ROOT.Dumpsta.El.Label = class extends ROOT.Dumpsta.El {
     }
 
     render (config) {
-        const { top, left, center, right, width, auto, text, me } = this
+        const { top, left, center, right, width, auto, text, el } = this
         const grid   = this.app.grid
         const length = text.length
 
@@ -499,7 +499,7 @@ ROOT.Dumpsta.El.Label = class extends ROOT.Dumpsta.El {
             for (let x=begin,c; x<begin+w; x++,pos++)
                 if (grid[top][x]) // not outside the left or right bounds
                     if (c = text[pos])
-                        grid[top][x] = { c, me } // `{ c:text[pos], me:me }`
+                        grid[top][x] = { c, el } // `{ c:text[pos], el:el }`
 
     }
 
@@ -547,7 +547,7 @@ ROOT.Dumpsta.El.Table = class extends ROOT.Dumpsta.El {
           , inert:  null
           , mode:   'char'
           , click:  null
-          , me:     this
+          , el:     this
         }
         Object.assign(this, defaults, config, { app })
 
@@ -556,8 +556,8 @@ ROOT.Dumpsta.El.Table = class extends ROOT.Dumpsta.El {
         if (null != this.height && ! config.auto) this.auto = false
 
         //// A Table is composed of a Box, a Border, and an array of Labels.
-        this.box    = new ROOT.Dumpsta.El.Box({ me:this.me }, app)
-        this.border = new ROOT.Dumpsta.El.Border({ me:this.me }, app)
+        this.box    = new ROOT.Dumpsta.El.Box({ el:this.el }, app)
+        this.border = new ROOT.Dumpsta.El.Border({ el:this.el }, app)
         this.labels = []
 
         //// Creating a new Table is just a special case of editing a Table.

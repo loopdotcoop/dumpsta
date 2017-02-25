@@ -3,9 +3,9 @@ if ('function' != typeof jQuery)
   throw Error('jQuery not found');
 jQuery(function($) {
   var dumpsta = new window.Dumpsta({char: ': · · · · '});
-  var border = dumpsta.add({el: window.Dumpsta.El.Border});
+  var border = dumpsta.add({class: window.Dumpsta.El.Border});
   var border0 = dumpsta.add({
-    el: window.Dumpsta.El.Border,
+    class: window.Dumpsta.El.Border,
     top: 6,
     left: 20,
     width: 15,
@@ -13,7 +13,7 @@ jQuery(function($) {
     title: 'Border Zero'
   });
   var border1 = dumpsta.add({
-    el: window.Dumpsta.El.Border,
+    class: window.Dumpsta.El.Border,
     top: 4,
     left: 9,
     width: 15,
@@ -21,21 +21,21 @@ jQuery(function($) {
     title: 'Border One'
   });
   var border2 = dumpsta.add({
-    el: window.Dumpsta.El.Border,
+    class: window.Dumpsta.El.Border,
     top: 0,
     left: 0,
     width: 1,
     height: 1
   });
   var border3 = dumpsta.add({
-    el: window.Dumpsta.El.Border,
+    class: window.Dumpsta.El.Border,
     top: 22,
     left: 77,
     width: 1,
     height: 1
   });
   var border4 = dumpsta.add({
-    el: window.Dumpsta.El.Border,
+    class: window.Dumpsta.El.Border,
     top: 7,
     left: 66,
     width: 20,
@@ -43,7 +43,7 @@ jQuery(function($) {
     title: 'Border Four'
   });
   var border5 = dumpsta.add({
-    el: window.Dumpsta.El.Border,
+    class: window.Dumpsta.El.Border,
     top: 1,
     left: -7,
     width: 20,
@@ -51,7 +51,7 @@ jQuery(function($) {
     title: 'Border Five'
   });
   var border6 = dumpsta.add({
-    el: window.Dumpsta.El.Border,
+    class: window.Dumpsta.El.Border,
     top: 20,
     left: 14,
     width: 40,
@@ -59,7 +59,7 @@ jQuery(function($) {
     title: 'Border Six'
   });
   var border7 = dumpsta.add({
-    el: window.Dumpsta.El.Border,
+    class: window.Dumpsta.El.Border,
     top: -4,
     left: 14,
     width: 40,
@@ -67,7 +67,7 @@ jQuery(function($) {
     title: 'Border Seven'
   });
   var border8 = dumpsta.add({
-    el: window.Dumpsta.El.Border,
+    class: window.Dumpsta.El.Border,
     top: 12,
     left: 4,
     width: 3,
@@ -75,7 +75,7 @@ jQuery(function($) {
     title: 'Border Eight'
   });
   var border9 = dumpsta.add({
-    el: window.Dumpsta.El.Border,
+    class: window.Dumpsta.El.Border,
     top: 12,
     left: 12,
     width: 2,
@@ -83,7 +83,7 @@ jQuery(function($) {
     title: 'Border Nine'
   });
   var border10 = dumpsta.add({
-    el: window.Dumpsta.El.Border,
+    class: window.Dumpsta.El.Border,
     top: 12,
     left: 17,
     width: 1,
@@ -91,7 +91,7 @@ jQuery(function($) {
     title: 'Border Ten'
   });
   var border11 = dumpsta.add({
-    el: window.Dumpsta.El.Border,
+    class: window.Dumpsta.El.Border,
     top: 12,
     left: 21,
     width: 0,
@@ -99,7 +99,7 @@ jQuery(function($) {
     title: 'Border Eleven'
   });
   var border12 = dumpsta.add({
-    el: window.Dumpsta.El.Border,
+    class: window.Dumpsta.El.Border,
     top: 16,
     left: 4,
     width: 3,
@@ -107,7 +107,7 @@ jQuery(function($) {
     title: 'Border Twelve'
   });
   var border13 = dumpsta.add({
-    el: window.Dumpsta.El.Border,
+    class: window.Dumpsta.El.Border,
     top: 19,
     left: 4,
     width: 3,
@@ -115,7 +115,7 @@ jQuery(function($) {
     title: 'Border Thirteen'
   });
   var border14 = dumpsta.add({
-    el: window.Dumpsta.El.Border,
+    class: window.Dumpsta.El.Border,
     top: 21,
     left: 4,
     width: 3,

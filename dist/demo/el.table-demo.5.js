@@ -4,14 +4,14 @@ if ('function' != typeof jQuery)
 jQuery(function($) {
   var dumpsta = new window.Dumpsta({char: ': · · · · '});
   var table0 = dumpsta.add({
-    el: window.Dumpsta.El.Table,
+    class: window.Dumpsta.El.Table,
     top: 10,
     left: 36,
     title: 'Table Zero',
     rows: [['Header ', 'Goes   ', 'In     ', 'Here   '], [55.3, 14.404, -17.6, 4e3]]
   });
   var table1 = dumpsta.add({
-    el: window.Dumpsta.El.Table,
+    class: window.Dumpsta.El.Table,
     top: 7,
     left: 10,
     auto: true,
@@ -19,21 +19,21 @@ jQuery(function($) {
     rows: []
   });
   var table2 = dumpsta.add({
-    el: window.Dumpsta.El.Table,
+    class: window.Dumpsta.El.Table,
     top: 0,
     left: 0,
     width: 1,
     height: 1
   });
   var table3 = dumpsta.add({
-    el: window.Dumpsta.El.Table,
+    class: window.Dumpsta.El.Table,
     top: 22,
     left: 77,
     width: 1,
     height: 1
   });
   var table4 = dumpsta.add({
-    el: window.Dumpsta.El.Table,
+    class: window.Dumpsta.El.Table,
     top: 7,
     left: 66,
     width: 20,
@@ -41,7 +41,7 @@ jQuery(function($) {
     title: 'Table Four'
   });
   var table5 = dumpsta.add({
-    el: window.Dumpsta.El.Table,
+    class: window.Dumpsta.El.Table,
     top: 1,
     left: -7,
     width: 20,
@@ -49,7 +49,7 @@ jQuery(function($) {
     title: 'Table Five'
   });
   var table6 = dumpsta.add({
-    el: window.Dumpsta.El.Table,
+    class: window.Dumpsta.El.Table,
     top: 20,
     left: 14,
     width: 40,
@@ -57,7 +57,7 @@ jQuery(function($) {
     title: 'Table Six'
   });
   var table7 = dumpsta.add({
-    el: window.Dumpsta.El.Table,
+    class: window.Dumpsta.El.Table,
     top: -2,
     left: 14,
     width: 40,
@@ -65,7 +65,7 @@ jQuery(function($) {
     title: 'Table Seven'
   });
   var table8 = dumpsta.add({
-    el: window.Dumpsta.El.Table,
+    class: window.Dumpsta.El.Table,
     top: 12,
     left: 4,
     width: 3,
@@ -73,7 +73,7 @@ jQuery(function($) {
     title: 'Table Eight'
   });
   var table9 = dumpsta.add({
-    el: window.Dumpsta.El.Table,
+    class: window.Dumpsta.El.Table,
     top: 12,
     left: 12,
     width: 2,
@@ -81,7 +81,7 @@ jQuery(function($) {
     title: 'Table Nine'
   });
   var table10 = dumpsta.add({
-    el: window.Dumpsta.El.Table,
+    class: window.Dumpsta.El.Table,
     top: 12,
     left: 17,
     width: 1,
@@ -89,7 +89,7 @@ jQuery(function($) {
     title: 'Table Ten'
   });
   var table11 = dumpsta.add({
-    el: window.Dumpsta.El.Table,
+    class: window.Dumpsta.El.Table,
     top: 12,
     left: 21,
     width: 0,
@@ -97,7 +97,7 @@ jQuery(function($) {
     title: 'Table Eleven'
   });
   var table12 = dumpsta.add({
-    el: window.Dumpsta.El.Table,
+    class: window.Dumpsta.El.Table,
     top: 16,
     left: 4,
     width: 4,
@@ -105,7 +105,7 @@ jQuery(function($) {
     title: 'Table Twelve'
   });
   var table13 = dumpsta.add({
-    el: window.Dumpsta.El.Table,
+    class: window.Dumpsta.El.Table,
     top: 19,
     left: 4,
     width: 3,
@@ -113,7 +113,7 @@ jQuery(function($) {
     title: 'Table Thirteen'
   });
   var table14 = dumpsta.add({
-    el: window.Dumpsta.El.Table,
+    class: window.Dumpsta.El.Table,
     top: 22,
     left: 4,
     width: 3,
@@ -121,7 +121,7 @@ jQuery(function($) {
     title: 'Table Fourteen'
   });
   var table15 = dumpsta.add({
-    el: window.Dumpsta.El.Table,
+    class: window.Dumpsta.El.Table,
     top: 16,
     left: 65,
     width: 12,

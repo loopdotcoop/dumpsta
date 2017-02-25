@@ -19,7 +19,7 @@ ROOT.Dumpsta.El.Label = class extends ROOT.Dumpsta.El {
           , text:   ''
           , mode:   'char'
           , click:  null
-          , me:     this
+          , el:     this
         }
         Object.assign(this, defaults, config, { app })
 
@@ -31,7 +31,7 @@ ROOT.Dumpsta.El.Label = class extends ROOT.Dumpsta.El {
     }
 
     render (config) {
-        const { top, left, center, right, width, auto, text, me } = this
+        const { top, left, center, right, width, auto, text, el } = this
         const grid   = this.app.grid
         const length = text.length
 
@@ -60,7 +60,7 @@ ROOT.Dumpsta.El.Label = class extends ROOT.Dumpsta.El {
             for (let x=begin,c; x<begin+w; x++,pos++)
                 if (grid[top][x]) // not outside the left or right bounds
                     if (c = text[pos])
-                        grid[top][x] = { c, me } // `{ c:text[pos], me:me }`
+                        grid[top][x] = { c, el } // `{ c:text[pos], el:el }`
 
     }
 

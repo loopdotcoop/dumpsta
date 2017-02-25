@@ -10,7 +10,7 @@ let dumpsta = new window.Dumpsta({
 
 //// Create an auto-width Table with the text 'Table Zero'.
 let table0 = dumpsta.add({
-    el:     window.Dumpsta.El.Table
+    class:  window.Dumpsta.El.Table
   , top:    10
   , left:   36
   , title:  'Table Zero'
@@ -22,7 +22,7 @@ let table0 = dumpsta.add({
 
 //// Create a Table with extra width, containing the text 'Table One'.
 let table1 = dumpsta.add({
-    el:     window.Dumpsta.El.Table
+    class:  window.Dumpsta.El.Table
   , top:    7
   , left:   10
   , auto:   true
@@ -32,7 +32,7 @@ let table1 = dumpsta.add({
 
 //// Create a 1x1 Table in the top left corner.
 let table2 = dumpsta.add({
-    el:     window.Dumpsta.El.Table
+    class:  window.Dumpsta.El.Table
   , top:    0
   , left:   0
   , width:  1
@@ -41,7 +41,7 @@ let table2 = dumpsta.add({
 
 //// Create a 1x1 Table near the bottom right corner.
 let table3 = dumpsta.add({
-    el:     window.Dumpsta.El.Table
+    class:  window.Dumpsta.El.Table
   , top:    22
   , left:   77
   , width:  1
@@ -50,7 +50,7 @@ let table3 = dumpsta.add({
 
 //// Create 'Table Four' which extends beyond the right-edge.
 let table4 = dumpsta.add({
-    el:     window.Dumpsta.El.Table
+    class:  window.Dumpsta.El.Table
   , top:    7
   , left:   66
   , width:  20
@@ -60,7 +60,7 @@ let table4 = dumpsta.add({
 
 //// Create 'Table Five' which extends beyond the left-edge.
 let table5 = dumpsta.add({
-    el:     window.Dumpsta.El.Table
+    class:  window.Dumpsta.El.Table
   , top:    1
   , left:   -7
   , width:  20
@@ -70,7 +70,7 @@ let table5 = dumpsta.add({
 
 //// Create 'Table Six' which extends beyond the bottom-edge.
 let table6 = dumpsta.add({
-    el:     window.Dumpsta.El.Table
+    class:  window.Dumpsta.El.Table
   , top:    20
   , left:   14
   , width:  40
@@ -80,7 +80,7 @@ let table6 = dumpsta.add({
 
 //// Create 'Table Seven' which extends beyond the top-edge.
 let table7 = dumpsta.add({
-    el:     window.Dumpsta.El.Table
+    class:  window.Dumpsta.El.Table
   , top:    -2
   , left:   14
   , width:  40
@@ -90,7 +90,7 @@ let table7 = dumpsta.add({
 
 //// Create 'Table Eight', which is 3x3.
 let table8 = dumpsta.add({
-    el:     window.Dumpsta.El.Table
+    class:  window.Dumpsta.El.Table
   , top:    12
   , left:   4
   , width:  3
@@ -100,7 +100,7 @@ let table8 = dumpsta.add({
 
 //// Create 'Table Nine', which is 2x3.
 let table9 = dumpsta.add({
-    el:     window.Dumpsta.El.Table
+    class:  window.Dumpsta.El.Table
   , top:    12
   , left:   12
   , width:  2
@@ -110,7 +110,7 @@ let table9 = dumpsta.add({
 
 //// Create 'Table Ten', which is 1x3.
 let table10 = dumpsta.add({
-    el:     window.Dumpsta.El.Table
+    class:  window.Dumpsta.El.Table
   , top:    12
   , left:   17
   , width:  1
@@ -120,7 +120,7 @@ let table10 = dumpsta.add({
 
 //// Create 'Table Eleven', which is 0x3.
 let table11 = dumpsta.add({
-    el:     window.Dumpsta.El.Table
+    class:  window.Dumpsta.El.Table
   , top:    12
   , left:   21
   , width:  0
@@ -130,7 +130,7 @@ let table11 = dumpsta.add({
 
 //// Create 'Table Twelve', which is 4x2.
 let table12 = dumpsta.add({
-    el:     window.Dumpsta.El.Table
+    class:  window.Dumpsta.El.Table
   , top:    16
   , left:   4
   , width:  4
@@ -140,7 +140,7 @@ let table12 = dumpsta.add({
 
 //// Create 'Table Thirteen', which is 3x1.
 let table13 = dumpsta.add({
-    el:     window.Dumpsta.El.Table
+    class:  window.Dumpsta.El.Table
   , top:    19
   , left:   4
   , width:  3
@@ -150,7 +150,7 @@ let table13 = dumpsta.add({
 
 //// Create 'Table Fourteen', which is 3x0.
 let table14 = dumpsta.add({
-    el:     window.Dumpsta.El.Table
+    class:  window.Dumpsta.El.Table
   , top:    22
   , left:   4
   , width:  3
@@ -160,7 +160,7 @@ let table14 = dumpsta.add({
 
 //// Create 'Table Fifteen', which is truncates the text.
 let table15 = dumpsta.add({
-    el:     window.Dumpsta.El.Table
+    class:  window.Dumpsta.El.Table
   , top:    16
   , left:   65
   , width:  12

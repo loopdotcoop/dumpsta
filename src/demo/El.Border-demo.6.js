@@ -9,11 +9,11 @@ let dumpsta = new window.Dumpsta({
 })
 
 //// Create a default Border.
-let border = dumpsta.add({ el:window.Dumpsta.El.Border })
+let border = dumpsta.add({ class:window.Dumpsta.El.Border })
 
 //// Create a Border with the title 'Border Zero'.
 let border0 = dumpsta.add({
-    el:     window.Dumpsta.El.Border
+    class:  window.Dumpsta.El.Border
   , top:    6
   , left:   20
   , width:  15
@@ -23,7 +23,7 @@ let border0 = dumpsta.add({
 
 //// Overlay it with 'Border One'.
 let border1 = dumpsta.add({
-    el:     window.Dumpsta.El.Border
+    class:  window.Dumpsta.El.Border
   , top:    4
   , left:   9
   , width:  15
@@ -33,7 +33,7 @@ let border1 = dumpsta.add({
 
 //// Create a 1x1 Border in the top left corner.
 let border2 = dumpsta.add({
-    el:     window.Dumpsta.El.Border
+    class:  window.Dumpsta.El.Border
   , top:    0
   , left:   0
   , width:  1
@@ -42,7 +42,7 @@ let border2 = dumpsta.add({
 
 //// Create a 1x1 Border near the bottom right corner.
 let border3 = dumpsta.add({
-    el:     window.Dumpsta.El.Border
+    class:  window.Dumpsta.El.Border
   , top:    22
   , left:   77
   , width:  1
@@ -51,7 +51,7 @@ let border3 = dumpsta.add({
 
 //// Create 'Border Four' which extends beyond the right-edge.
 let border4 = dumpsta.add({
-    el:     window.Dumpsta.El.Border
+    class:  window.Dumpsta.El.Border
   , top:    7
   , left:   66
   , width:  20
@@ -61,7 +61,7 @@ let border4 = dumpsta.add({
 
 //// Create 'Border Five' which extends beyond the left-edge.
 let border5 = dumpsta.add({
-    el:     window.Dumpsta.El.Border
+    class:  window.Dumpsta.El.Border
   , top:    1
   , left:   -7
   , width:  20
@@ -71,7 +71,7 @@ let border5 = dumpsta.add({
 
 //// Create 'Border Six' which extends beyond the bottom-edge.
 let border6 = dumpsta.add({
-    el:     window.Dumpsta.El.Border
+    class:  window.Dumpsta.El.Border
   , top:    20
   , left:   14
   , width:  40
@@ -81,7 +81,7 @@ let border6 = dumpsta.add({
 
 //// Create 'Border Seven' which extends beyond the top-edge.
 let border7 = dumpsta.add({
-    el:     window.Dumpsta.El.Border
+    class:  window.Dumpsta.El.Border
   , top:    -4
   , left:   14
   , width:  40
@@ -91,7 +91,7 @@ let border7 = dumpsta.add({
 
 //// Create 'Border Eight', which is 3x3.
 let border8 = dumpsta.add({
-    el:     window.Dumpsta.El.Border
+    class:  window.Dumpsta.El.Border
   , top:    12
   , left:   4
   , width:  3
@@ -101,7 +101,7 @@ let border8 = dumpsta.add({
 
 //// Create 'Border Nine', which is 2x3.
 let border9 = dumpsta.add({
-    el:     window.Dumpsta.El.Border
+    class:  window.Dumpsta.El.Border
   , top:    12
   , left:   12
   , width:  2
@@ -111,7 +111,7 @@ let border9 = dumpsta.add({
 
 //// Create 'Border Ten', which is 1x3.
 let border10 = dumpsta.add({
-    el:     window.Dumpsta.El.Border
+    class:  window.Dumpsta.El.Border
   , top:    12
   , left:   17
   , width:  1
@@ -121,7 +121,7 @@ let border10 = dumpsta.add({
 
 //// Create 'Border Eleven', which is 0x3.
 let border11 = dumpsta.add({
-    el:     window.Dumpsta.El.Border
+    class:  window.Dumpsta.El.Border
   , top:    12
   , left:   21
   , width:  0
@@ -131,7 +131,7 @@ let border11 = dumpsta.add({
 
 //// Create 'Border Twelve', which is 3x2.
 let border12 = dumpsta.add({
-    el:     window.Dumpsta.El.Border
+    class:  window.Dumpsta.El.Border
   , top:    16
   , left:   4
   , width:  3
@@ -141,7 +141,7 @@ let border12 = dumpsta.add({
 
 //// Create 'Border Thirteen', which is 3x1.
 let border13 = dumpsta.add({
-    el:     window.Dumpsta.El.Border
+    class:  window.Dumpsta.El.Border
   , top:    19
   , left:   4
   , width:  3
@@ -151,7 +151,7 @@ let border13 = dumpsta.add({
 
 //// Create 'Border Fourteen', which is 3x0.
 let border14 = dumpsta.add({
-    el:     window.Dumpsta.El.Border
+    class:  window.Dumpsta.El.Border
   , top:    21
   , left:   4
   , width:  3

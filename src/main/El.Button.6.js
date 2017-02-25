@@ -23,7 +23,7 @@ ROOT.Dumpsta.El.Button = class extends ROOT.Dumpsta.El {
           , inert:    null
           , mode:     'char'
           , click:    null
-          , me:       this
+          , el:       this
         }
         Object.assign(this, defaults, config, { app })
 
@@ -43,7 +43,7 @@ ROOT.Dumpsta.El.Button = class extends ROOT.Dumpsta.El {
           , center: this.left  + Math.floor( (this.width) / 2 )
           , width:  this.width - 2
           , text:   this.text
-          , me:     this.me
+          , el:     this.el
         }, app)
     }
 

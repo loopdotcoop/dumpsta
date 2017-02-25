@@ -21,7 +21,7 @@ ROOT.Dumpsta.El.Box = class extends ROOT.Dumpsta.El {
           , inert:    null
           , mode:     'char'
           , click:    null
-          , me:       this
+          , el:       this
         }
         Object.assign(this, defaults, config, { app })
 
@@ -34,9 +34,9 @@ ROOT.Dumpsta.El.Box = class extends ROOT.Dumpsta.El {
     }
 
     render (config) {
-        const { top, left, width, height, mode, me } = this
+        const { top, left, width, height, mode, el } = this
         const grid   = this.app.grid
-        const c      = this[ me.mode ] || this.char //@todo debug, so `|| this.char is not needed`
+        const c      = this[ el.mode ] || this.char //@todo debug, so `|| this.char is not needed`
         const length = c.length // `c[i % length]` allows multi-char fills
 
         if (1 > width || 1 > height) return // invisible
@@ -48,7 +48,7 @@ ROOT.Dumpsta.El.Box = class extends ROOT.Dumpsta.El {
                     if (grid[y][x]) // skip the grid-position if missing
                         grid[y][x] = {
                             c: c[i % length] // draw `char` or `hover`
-                          , me               // backref for mouse-events
+                          , el               // backref for mouse-events
                         }
     }
 

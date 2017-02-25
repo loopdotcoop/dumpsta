@@ -3,7 +3,7 @@
 !function (ROOT) { 'use strict'
 
 const NAME     = 'Dumpsta'
-    , VERSION  = '0.0.8'
+    , VERSION  = '0.0.9'
     , HOMEPAGE = 'http://dumpsta.loop.coop/'
 
 
@@ -37,7 +37,7 @@ const Dumpsta = ROOT.Dumpsta = class {
         }
 
         //// ...and adding a full-scale Box (filled with spaces, by default).
-        this.add({ el:Dumpsta.El.Box, char:this.char })
+        this.add({ class:Dumpsta.El.Box, char:this.char })
     }
 
 
@@ -77,7 +77,7 @@ const Dumpsta = ROOT.Dumpsta = class {
     add (config={}) {
         const id = config.id = this.id++ // record the new ID in `config`
         const z  = config.z  = this.els.length // record the z-index in `config`
-        this.ids[id] = this.els[z] = new config.el(config, this)
+        this.ids[id] = this.els[z] = new config.class(config, this)
         return id
     }
 
@@ -122,15 +122,15 @@ const Dumpsta = ROOT.Dumpsta = class {
             this.els.forEach( el => el.mode = 'focus' == el.mode ? 'focus' : 'char' ) // reset all modes
             const x  = Math.floor(this.width  * config.x)
                 , y  = Math.floor(this.height * config.y)
-                , me = this.grid[y][x].me
-            if (! me) return // not interactive
-            me.mode = 'focus' == me.mode ? 'focus' : config.mode
-            if (me.click) {
+                , el = this.grid[y][x].el
+            if (! el) return // not interactive
+            el.mode = 'focus' == el.mode ? 'focus' : config.mode
+            if (el.click) {
                 if (config.click) {
-                    me.click() // note that clicking switches focus
+                    el.click() // note that clicking switches focus
                     if (ids[this.focus]) ids[this.focus].mode = 'char'
-                    this.focus = me.id
-                    me.mode = 'focus'
+                    this.focus = el.id
+                    el.mode = 'focus'
                 }
                 return 'pointer'
             } else {

@@ -4,7 +4,7 @@ if ('function' != typeof jQuery)
 jQuery(function($) {
   var dumpsta = new window.Dumpsta({char: ': · · · · '});
   var box0 = dumpsta.add({
-    el: window.Dumpsta.El.Box,
+    class: window.Dumpsta.El.Box,
     top: 12,
     left: 40,
     width: 10,
@@ -12,7 +12,7 @@ jQuery(function($) {
     char: '#'
   });
   var box1 = dumpsta.add({
-    el: window.Dumpsta.El.Box,
+    class: window.Dumpsta.El.Box,
     top: 10,
     left: 28,
     width: 15,
@@ -20,7 +20,7 @@ jQuery(function($) {
     char: 'X'
   });
   var box2 = dumpsta.add({
-    el: window.Dumpsta.El.Box,
+    class: window.Dumpsta.El.Box,
     top: 0,
     left: 0,
     width: 1,
@@ -28,7 +28,7 @@ jQuery(function($) {
     char: '*'
   });
   var box3 = dumpsta.add({
-    el: window.Dumpsta.El.Box,
+    class: window.Dumpsta.El.Box,
     top: 23,
     left: 79,
     width: 1,
@@ -36,7 +36,7 @@ jQuery(function($) {
     char: '_'
   });
   var box4 = dumpsta.add({
-    el: window.Dumpsta.El.Box,
+    class: window.Dumpsta.El.Box,
     top: 3,
     left: 70,
     width: 20,
@@ -44,7 +44,7 @@ jQuery(function($) {
     char: 'right-'
   });
   var box5 = dumpsta.add({
-    el: window.Dumpsta.El.Box,
+    class: window.Dumpsta.El.Box,
     top: 3,
     left: -10,
     width: 20,
@@ -52,7 +52,7 @@ jQuery(function($) {
     char: 'left-'
   });
   var box6 = dumpsta.add({
-    el: window.Dumpsta.El.Box,
+    class: window.Dumpsta.El.Box,
     top: 20,
     left: 40,
     width: 2,
@@ -60,7 +60,7 @@ jQuery(function($) {
     char: 'bottom-'
   });
   var box7 = dumpsta.add({
-    el: window.Dumpsta.El.Box,
+    class: window.Dumpsta.El.Box,
     top: -4,
     left: 40,
     width: 2,
@@ -68,7 +68,7 @@ jQuery(function($) {
     char: 'top-'
   });
   var box8 = dumpsta.add({
-    el: window.Dumpsta.El.Box,
+    class: window.Dumpsta.El.Box,
     top: 12,
     left: 4,
     width: 3,
@@ -76,7 +76,7 @@ jQuery(function($) {
     char: 8
   });
   var box9 = dumpsta.add({
-    el: window.Dumpsta.El.Box,
+    class: window.Dumpsta.El.Box,
     top: 12,
     left: 12,
     width: 2,
@@ -84,7 +84,7 @@ jQuery(function($) {
     char: 9
   });
   var box10 = dumpsta.add({
-    el: window.Dumpsta.El.Box,
+    class: window.Dumpsta.El.Box,
     top: 12,
     left: 17,
     width: 1,
@@ -92,7 +92,7 @@ jQuery(function($) {
     char: 10
   });
   var box11 = dumpsta.add({
-    el: window.Dumpsta.El.Box,
+    class: window.Dumpsta.El.Box,
     top: 12,
     left: 21,
     width: 0,
@@ -100,7 +100,7 @@ jQuery(function($) {
     char: 11
   });
   var box12 = dumpsta.add({
-    el: window.Dumpsta.El.Box,
+    class: window.Dumpsta.El.Box,
     top: 16,
     left: 4,
     width: 3,
@@ -108,7 +108,7 @@ jQuery(function($) {
     char: 12
   });
   var box13 = dumpsta.add({
-    el: window.Dumpsta.El.Box,
+    class: window.Dumpsta.El.Box,
     top: 19,
     left: 4,
     width: 3,
@@ -116,7 +116,7 @@ jQuery(function($) {
     char: 13
   });
   var box14 = dumpsta.add({
-    el: window.Dumpsta.El.Box,
+    class: window.Dumpsta.El.Box,
     top: 21,
     left: 4,
     width: 3,

@@ -25,7 +25,7 @@ ROOT.Dumpsta.El.Table = class extends ROOT.Dumpsta.El {
           , inert:  null
           , mode:   'char'
           , click:  null
-          , me:     this
+          , el:     this
         }
         Object.assign(this, defaults, config, { app })
 
@@ -34,8 +34,8 @@ ROOT.Dumpsta.El.Table = class extends ROOT.Dumpsta.El {
         if (null != this.height && ! config.auto) this.auto = false
 
         //// A Table is composed of a Box, a Border, and an array of Labels.
-        this.box    = new ROOT.Dumpsta.El.Box({ me:this.me }, app)
-        this.border = new ROOT.Dumpsta.El.Border({ me:this.me }, app)
+        this.box    = new ROOT.Dumpsta.El.Box({ el:this.el }, app)
+        this.border = new ROOT.Dumpsta.El.Border({ el:this.el }, app)
         this.labels = []
 
         //// Creating a new Table is just a special case of editing a Table.
