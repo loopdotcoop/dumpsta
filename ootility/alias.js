@@ -1,7 +1,7 @@
 !function () { 'use strict'
 
 const NAME     = 'Oopish Alias'
-    , VERSION  = '0.0.3'
+    , VERSION  = '0.0.4'
     , HOMEPAGE = 'http://alias.oopish.com/'
 
     , HELP =
@@ -15,7 +15,7 @@ which will help speed up your development workflow.
 Basic Usage
 -----------
 $ cd /path/to/your/project/
-$ node utility/alias.js
+$ node ootility/alias.js
 ${NAME} ${VERSION} added 6 lines to ~/.bash_profile.
 After reopening your terminal, the following commands will be available:
     ooauto   Generates new classes, demos, docs and tests
@@ -28,13 +28,13 @@ After reopening your terminal, the following commands will be available:
 
 Aliases
 -------
-$ ooauto   node utility/auto.js
-$ oobump   node utility/bump.js
-$ oodocs   node utility/docs.js
-$ ooinit   node utility/init.js
-$ oomake   node utility/make.js
-$ oopush   node utility/push.js
-$ ootest   node utility/test.js
+$ ooauto   node ootility/auto.js
+$ oobump   node ootility/bump.js
+$ oodocs   node ootility/docs.js
+$ ooinit   node ootility/init.js
+$ oomake   node ootility/make.js
+$ oopush   node ootility/push.js
+$ ootest   node ootility/test.js
 
 Options
 -------
@@ -46,12 +46,12 @@ This script belongs to ${HOMEPAGE}`
 
 
 //// Validate the environment.
-if ( '/utility/alias.js' !== process.argv[1].slice(-17) )
+if ( '/ootility/alias.js' !== process.argv[1].slice(-18) )
     return console.warn('Unexpected environment!')
-if ( ( process.cwd() !== process.argv[1].slice(0,-17) ) )
+if ( ( process.cwd() !== process.argv[1].slice(0,-18) ) )
     return console.warn('Unexpected CWD, try:\n  $ cd /path/to/your/project')
 if ('function' !== typeof require)
-    return console.warn('Use Node.js instead:\n  $ node utility/alias.js')
+    return console.warn('Use Node.js instead:\n  $ node ootility/alias.js')
 
 
 
@@ -97,7 +97,7 @@ Windows cannot run ${NAME} ${VERSION}`)
 //// Check whether the aliases have already been added.
 original = ( fs.readFileSync(path)+'' ).split('\n')
 removed = original.filter( line =>
-    ! /^alias oo(auto|bump|docs|init|make|push|test)="node utility\//.test(line)
+    ! /^alias oo(auto|bump|docs|init|make|push|test)="node ootility\//.test(line)
 )
 diff = original.length - removed.length
 if (diff)
@@ -112,7 +112,7 @@ if (diff)
 You should change temporarily change the permissions, eg:
     OLD_PERMISSIONS=\`stat -f '%A' "${path}"\`;\\
     chmod 644 "${path}";\\
-    node utility/alias.js --remove;\\
+    node ootility/alias.js --remove;\\
     chmod $OLD_PERMISSIONS "${path}"`)
             else
                 return console.warn(`${NAME} ${VERSION} cannot write to ${path}:\n`, e)
@@ -124,7 +124,7 @@ You should change temporarily change the permissions, eg:
 `${NAME} ${VERSION} did not run, because there are already lines added by
 ${NAME} in ${path}.
 To remove these lines, run:
-    node utility/alias.js --remove`)
+    node ootility/alias.js --remove`)
 
 if (remove)
     return console.warn(
@@ -135,13 +135,13 @@ if (remove)
 try {
     const comment = getComment()
     fs.writeFileSync( path, ( original.concat([
-        `alias ooauto="node utility/auto.js" ${comment}`
-      , `alias oobump="node utility/bump.js" ${comment}`
-      , `alias oodocs="node utility/docs.js" ${comment}`
-      , `alias ooinit="node utility/init.js" ${comment}`
-      , `alias oomake="node utility/make.js" ${comment}`
-      , `alias oopush="node utility/push.js" ${comment}`
-      , `alias ootest="node utility/test.js" ${comment}`
+        `alias ooauto="node ootility/auto.js" ${comment}`
+      , `alias oobump="node ootility/bump.js" ${comment}`
+      , `alias oodocs="node ootility/docs.js" ${comment}`
+      , `alias ooinit="node ootility/init.js" ${comment}`
+      , `alias oomake="node ootility/make.js" ${comment}`
+      , `alias oopush="node ootility/push.js" ${comment}`
+      , `alias ootest="node ootility/test.js" ${comment}`
       , ''
     ]) ).join('\n') )
 } catch (e) {
@@ -153,7 +153,7 @@ try {
 You should change temporarily change the permissions, eg:
     OLD_PERMISSIONS=\`stat -f '%A' "${path}"\`;\\
     chmod 644 "${path}";\\
-    node utility/alias.js;\\
+    node ootility/alias.js;\\
     chmod $OLD_PERMISSIONS "${path}"`)
 
     //// Some other file error.

@@ -16,7 +16,7 @@ associated with one or more new class.
 Installation
 ------------
 If you haven’t done it already, you should set up the \`ooauto\` alias:
-$ node utility/alias.js
+$ node ootility/alias.js
 
 Basic Usage
 -----------
@@ -54,12 +54,12 @@ This script belongs to ${HOMEPAGE}`
 //// Validate the environment.
 const nodePath   = process.argv.shift()
 const scriptPath = process.argv.shift()
-if ( '/utility/auto.js' !== scriptPath.slice(-16) )
+if ( '/ootility/auto.js' !== scriptPath.slice(-17) )
     return console.warn('Unexpected environment!')
-if ( ( process.cwd() !== scriptPath.slice(0,-16) ) )
+if ( ( process.cwd() !== scriptPath.slice(0,-17) ) )
     return console.warn('Unexpected CWD, try:\n  $ cd /path/to/your/project/')
 if ('function' !== typeof require)
-    return console.warn('Use Node.js instead:\n  $ node utility/auto.js')
+    return console.warn('Use Node.js instead:\n  $ node ootility/auto.js')
 
 
 

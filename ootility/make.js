@@ -19,7 +19,7 @@ You’ll need Uglify and Traceur installed globally before running make.js:
 $ npm install -g uglify-js; npm install -g traceur
 
 If you haven’t done it already, you should set up the \`oomake\` alias:
-$ node utility/alias.js
+$ node ootility/alias.js
 
 Basic Usage
 -----------
@@ -51,12 +51,12 @@ This script belongs to ${HOMEPAGE}`
 //// Validate the environment.
 const nodePath   = process.argv.shift()
 const scriptPath = process.argv.shift()
-if ( '/utility/make.js' !== scriptPath.slice(-16) )
+if ( '/ootility/make.js' !== scriptPath.slice(-17) )
     return console.warn('Unexpected environment!')
-if ( ( process.cwd() !== scriptPath.slice(0,-16) ) )
+if ( ( process.cwd() !== scriptPath.slice(0,-17) ) )
     return console.warn('Unexpected CWD, try:\n  $ cd /path/to/your/project/')
 if ('function' !== typeof require)
-    return console.warn('Use Node.js instead:\n  $ node utility/make.js')
+    return console.warn('Use Node.js instead:\n  $ node ootility/make.js')
 
 
 
