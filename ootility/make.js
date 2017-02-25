@@ -2,7 +2,7 @@
 
 const NAME     = 'Oopish Make'
     , VERSION  = '0.0.6'
-    , HOMEPAGE = 'http://make.oopish.com/'
+    , HOMEPAGE = 'http://ootility.oopish.com/'
 
     , BYLINE   = `\n\n\n\n//\\\\//\\\\ built by ${NAME} ${VERSION}\n`
     , HELP =

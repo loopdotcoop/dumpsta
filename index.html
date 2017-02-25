@@ -23,19 +23,18 @@
 <body style="font-family:Arial, sans-serif; background:#ccc; color:#333">
 
   <!-- Dropdown menu to select JavaScript format -->
-  <select id="es" style="float:right" onchange="document.cookie='es='
-    +this.options[this.selectedIndex].value;location.reload()">
-    <option value="~0~">Production ES5</option><!-- default -->
-    <option value="~1~">Production Minified ES5</option>
-    <option value="~2~">Production ES6</option>
-    <option value="~3~">Development ES6</option>
-  </select>
-  <script>!function(d,i,s){i=~~d.cookie.split('~')[1];s=d.getElementById('es')
-  if(s)s.options[i].selected=true}(document)</script>
+  <select id="ecmaswitch" style="float:right" onchange="document.cookie=
+    'ecmaswitch='+this.options[this.selectedIndex].value;location.reload()">
+    <option value="~0~">ES5 Production</option><!-- default -->
+    <option value="~1~">ES5 Minified</option>
+    <option value="~2~">ES6 Production</option>
+    <option value="~3~">ES6 Development</option>
+  </select><script>!function(d,f,e){if(e=d.getElementById('ecmaswitch'))f=~~
+    d.cookie.split('~')[1],e.options[f].selected=!0}(document)</script>
 
   <!-- Header and Navigation menu -->
-  <h1 style="display:inline">Dumpsta <span id="version"> 0.0.*</span>&nbsp;</h1>
-
+  <h1 style="display:inline">Dumpsta
+    <span id="version">0.0.*</span> <span id="format"></span>&nbsp;</h1>
   <span id="home">Home</span> &nbsp;
   <a href="support/test.html">Test</a> &nbsp;
   <a href="support/demos.html">Demos</a> &nbsp;
@@ -46,47 +45,23 @@
   <!-- Homepage content -->
   <!-- @todo -->
 
-  <!-- Upgrade message for Internet Explorer 8 and below -->
-  <!--[if lte IE 8]>
-  <h2>Please upgrade to Internet Explorer 9 or higher</h2>
-  <script>document.getElementById('version').innerHTML='Not Supported';</script>
-  <![endif]-->
+  <!-- Upgrade message for Internet Explorer 8 and below --><!--[if lte IE 8]>
+  <script>document.getElementById('version').innerHTML='Not Supported'</script>
+  <h2>Please upgrade to Internet Explorer 9 or higher</h2><![endif]-->
+  <!-- Begin hiding from IE 8 and below --><!--[if gte IE 9 | !IE ]><!-->
 
-  <!--[if gte IE 9 | !IE ]><!--><!-- Begin hiding from IE 8 and below -->
-
-  <!-- Load the proper scripts, according to the <SELECT> dropdown menu -->
-  <script>!function (d) { 'use strict'
-      var i = ~~d.cookie.split('~')[1] // 0 - 3
-        , f = (3 == i) ? 'src/' : 'dist/' // folder
-        , s = // src values
-              (1 == i) ? [ // Production Minified ES5
-                , 'lib/traceur-runtime.min.js'
-                , f + 'main/dumpsta.5.min.js'
-              ]
-            : (2 == i) ? [ // Production ES6
-                  f + 'main/dumpsta.6.js'
-              ]
-            : (3 == i) ? [ // Development ES6
-                  f + 'main/App.6.js' // only need this for the `VERSION`
-              ]
-            : [ // Production ES5 (the default, if no cookie has been set)
-                , 'lib/traceur-runtime.js'
-                , f + 'main/dumpsta.5.js'
-              ]
-        , B = '<script src="'  // begin
-        , E = '"></'+'script>' // end
-      s.unshift('lib/jquery-3.1.1.min.js') // start with jQuery
-      d.write(B + s.join(E + B) + E)
-  }(document)</script>
+  <!-- Load the proper format scripts, according to the '#ecmaswitch' menu -->
+  <script src="support/ecmaswitch.js"></script>
+  <script>ECMASwitch.load('./')</script>
 
   <!-- Link to the proper homepage domain, if we’re not already there -->
   <script>if ( 0 > location.href.indexOf(Dumpsta.HOMEPAGE) )
   $('#home').html('<a href="' + Dumpsta.HOMEPAGE + '">Home</a>')</script>
 
-  <!-- Display the version -->
-  <script>$('#version').html(Dumpsta.VERSION || '(VERSION not found)')</script>
+  <!-- Display the version and format -->
+  <script>$('#version').html(Dumpsta.VERSION||'(no VERSION)');$('#format').html(
+  'es'+'5|5 min|6|6 dev'.split('|')[~~document.cookie.split('~')[1]])</script>
 
-  <!--<![endif]--><!-- End hiding from Internet Explorer 8 and below -->
-
+  <!-- End hiding from Internet Explorer 8 and below --><!--<![endif]-->
 </body>
 </html>

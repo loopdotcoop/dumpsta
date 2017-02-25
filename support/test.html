@@ -23,19 +23,18 @@
 <body style="font-family:Arial, sans-serif; background:#ccc; color:#333">
 
   <!-- Dropdown menu to select JavaScript format -->
-  <select id="es" style="float:right" onchange="document.cookie='es='
-    +this.options[this.selectedIndex].value;location.reload()">
-    <option value="~0~">Production ES5</option><!-- default -->
-    <option value="~1~">Production Minified ES5</option>
-    <option value="~2~">Production ES6</option>
-    <option value="~3~">Development ES6</option>
-  </select>
-  <script>!function(d,i,s){i=~~d.cookie.split('~')[1];s=d.getElementById('es')
-  if(s)s.options[i].selected=true}(document)</script>
+  <select id="ecmaswitch" style="float:right" onchange="document.cookie=
+    'ecmaswitch='+this.options[this.selectedIndex].value;location.reload()">
+    <option value="~0~">ES5 Production</option><!-- default -->
+    <option value="~1~">ES5 Minified</option>
+    <option value="~2~">ES6 Production</option>
+    <option value="~3~">ES6 Development</option>
+  </select><script>!function(d,f,e){if(e=d.getElementById('ecmaswitch'))f=~~
+    d.cookie.split('~')[1],e.options[f].selected=!0}(document)</script>
 
   <!-- Header and Navigation menu -->
-  <h1 style="display:inline">Dumpsta <span id="version"> 0.0.*</span>&nbsp;</h1>
-
+  <h1 style="display:inline">Dumpsta
+    <span id="version">0.0.*</span> <span id="format"></span>&nbsp;</h1>
   <a href="../index.html">Home</a> &nbsp;
   <span>Test</span> &nbsp;
   <a href="demos.html">Demos</a> &nbsp;
@@ -55,52 +54,37 @@
   <script src="../lib/test/klud.js"></script>
   <script src="../lib/test/report.js"></script>
 
-  <!-- Load the proper scripts, according to the <SELECT> dropdown menu -->
-  <script>!function (d) { 'use strict'
-      var i = ~~d.cookie.split('~')[1] // 0 - 3
-        , f = (3 == i) ? '../src/' : '../dist/' // folder
-        , s = // src values
-              (1 == i) ? [ // Production Minified ES5
-                , '../lib/traceur-runtime.min.js'
-                , f + 'main/dumpsta.5.min.js'
-                , f + 'test/dumpsta-browser-test.5.js'   // no need to minify
-                , f + 'test/dumpsta-universal-test.5.js' // no need to minify
-              ]
-            : (2 == i) ? [ // Production ES6
-                  f + 'main/dumpsta.6.js'
-                , f + 'test/dumpsta-browser-test.6.js'
-                , f + 'test/dumpsta-universal-test.6.js'
-              ]
-            : (3 == i) ? [ // Development ES6
-                  f + 'main/App.6.js'
-                , f + 'main/Border.6.js'
-                , f + 'main/Box.6.js'
-                , f + 'main/Button.6.js'
-                , f + 'main/Label.6.js'
-                , f + 'main/Table.6.js'
-                , f + 'test/App-universal-test.6.js'
-                , f + 'test/Border-universal-test.6.js'
-                , f + 'test/Box-universal-test.6.js'
-                , f + 'test/Button-universal-test.6.js'
-                , f + 'test/Label-universal-test.6.js'
-                , f + 'test/Table-universal-test.6.js'
-              ]
-            : [ // Production ES5 (the default, if no cookie has been set)
-                , '../lib/traceur-runtime.js'
-                , f + 'main/dumpsta.5.js'
-                , f + 'test/dumpsta-browser-test.5.js'
-                , f + 'test/dumpsta-universal-test.5.js'
-              ]
-        , B = '<script src="'  // begin
-        , E = '"></'+'script>' // end
-      s.unshift('../lib/jquery-3.1.1.min.js') // start with jQuery
-      d.write(B + s.join(E + B) + E)
-  }(document)</script>
+  <!-- Load the proper format scripts, according to the '#ecmaswitch' menu -->
+  <script src="../support/ecmaswitch.js"></script>
+  <script>ECMASwitch.load('../', [
+      [
+          '../dist/test/dumpsta-browser-test.5.js'
+        , '../dist/test/dumpsta-browser-test.5.js' // no need to minify a test
+        , '../dist/test/dumpsta-browser-test.6.js'
+        , null
+      ]
+    , [
+          '../dist/test/dumpsta-universal-test.5.js'
+        , '../dist/test/dumpsta-universal-test.5.js' // no need to minify a test
+        , '../dist/test/dumpsta-universal-test.6.js'
+        , null
+      ]
+    , [ null, null, null, '../src/test/App-universal-test.6.js' ]
+    , [ null, null, null, '../src/test/Border-universal-test.6.js' ]
+    , [ null, null, null, '../src/test/Box-universal-test.6.js' ]
+    , [ null, null, null, '../src/test/Button-universal-test.6.js' ]
+    , [ null, null, null, '../src/test/Label-universal-test.6.js' ]
+    , [ null, null, null, '../src/test/Table-universal-test.6.js' ]
+  ])</script>
 
-  <!-- Display the version -->
-  <script>$('#version').html(Dumpsta.VERSION || '(VERSION not found)')</script>
+  <!-- Link to the proper homepage domain, if we’re not already there -->
+  <script>if ( 0 > location.href.indexOf(Dumpsta.HOMEPAGE) )
+  $('#home').html('<a href="' + Dumpsta.HOMEPAGE + '">Home</a>')</script>
 
-  <!--<![endif]--><!-- End hiding from Internet Explorer 8 and below -->
+  <!-- Display the version and format -->
+  <script>$('#version').html(Dumpsta.VERSION||'(no VERSION)');$('#format').html(
+  'es'+'5|5 min|6|6 dev'.split('|')[~~document.cookie.split('~')[1]])</script>
 
+  <!-- End hiding from Internet Explorer 8 and below --><!--<![endif]-->
 </body>
 </html>
