@@ -411,10 +411,6 @@ function generateDemoPage (name) {
       ]
   ])</script>
 
-  <!-- Link to the proper homepage domain, if we’re not already there -->
-  <script>if ( 0 > location.href.indexOf(${projectTC}.HOMEPAGE) )
-  $('#home').html('<a href="' + ${projectTC}.HOMEPAGE + '">Home</a>')</script>
-
   <!-- Display the version and format -->
   <script>$('#version').html(${projectTC}.VERSION||'(no VERSION)');$('#format').html(
   'es'+'5|5 min|6|6 dev'.split('|')[~~document.cookie.split('~')[1]])</script>

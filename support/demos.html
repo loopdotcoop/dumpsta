@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Dumpsta Demos</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Demos of how to use Dumpsta">
+  <meta name="description" content="Usage examples for Dumpsta">
 
   <!-- Usage: `LERT("Some alert message here!")` -->
   <script>!function(s){var A='addEventListener',L='LERT',S='setAttribute',t=top,
@@ -81,10 +81,6 @@
   <!-- Load the proper format scripts, according to the '#ecmaswitch' menu -->
   <script src="../support/ecmaswitch.js"></script>
   <script>ECMASwitch.load('../')</script>
-
-  <!-- Link to the proper homepage domain, if we’re not already there -->
-  <script>if ( 0 > location.href.indexOf(Dumpsta.HOMEPAGE) )
-  $('#home').html('<a href="' + Dumpsta.HOMEPAGE + '">Home</a>')</script>
 
   <!-- Display the version and format -->
   <script>$('#version').html(Dumpsta.VERSION||'(no VERSION)');$('#format').html(
